@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import { motion } from 'framer-motion';
+import { log } from 'console';
 
 const Navbar = () => {
     const pathname: string = usePathname();
@@ -11,6 +12,10 @@ const Navbar = () => {
         { text: 'Register', url: '/register' },
         { text: 'Home', url: '/' },
     ];
+
+    const isCurrentLink = (url: string) => {
+        return pathname == url;
+    };
 
     return (
         <nav style={navStyle}>
@@ -22,19 +27,15 @@ const Navbar = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                         >
-                            <motion.div layoutId="navbar">
-                                <Link
-                                    style={{
-                                        borderBottom:
-                                            pathname === e.url
-                                                ? '2px solid black'
-                                                : 'none',
-                                    }}
-                                    href={e.url}
-                                >
-                                    {e.text}
-                                </Link>
-                            </motion.div>
+                            <Link href={e.url}>
+                                {e.text}
+                                {isCurrentLink(e.url) && (
+                                    <motion.div
+                                        layoutId="current-link"
+                                        style={currentLinkStyle}
+                                    />
+                                )}
+                            </Link>
                         </motion.li>
                     );
                 })}
@@ -56,6 +57,12 @@ const ulStyle: React.CSSProperties = {
 const navStyle: React.CSSProperties = {
     backgroundColor: '#7FC7D9',
     padding: 15,
+    zIndex: 5,
+};
+
+const currentLinkStyle: React.CSSProperties = {
+    borderBottom: '2px solid white',
+    padding: 3,
 };
 
 export default Navbar;
