@@ -1,14 +1,22 @@
 .slideshow {
     position: absolute;
-    top: 5%;
+    top: 20%;
+    left: 5%;
     width: 40%;
     height: 50%;
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    @media (max-width: 300px) {
+        display: none;
+        top: 0;
+        left: 0;
+        border-radius: 0;
+    }
 }
 
 .slideshow img {
+    box-shadow: '0 0 10px #000';
     object-fit: cover;
     position: absolute;
     transform: scale(1.1) translateX(-1rem) rotate(-5deg);
