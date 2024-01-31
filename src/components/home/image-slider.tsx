@@ -7,9 +7,9 @@ import {
     phone,
     tv,
 } from '@/assets/homepage-slider-images';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
-const images = [
+const images: { image: StaticImageData; alt: string }[] = [
     { image: Computer, alt: 'Computer' },
     { image: coffeeMaker, alt: 'Coffee Maker' },
     { image: phone, alt: 'Phone' },
@@ -30,7 +30,7 @@ const ImageSlider = () => {
     }, []);
 
     return (
-        <div  className={classes.slideshow}>
+        <div className={classes.slideshow}>
             {images.map((image, index) => (
                 <Image
                     key={index}

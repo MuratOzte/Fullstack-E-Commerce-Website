@@ -46,7 +46,7 @@ const Navbar = () => {
 
 const ulStyle: React.CSSProperties = {
     display: 'flex',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     textAlign: 'center',
     listStyle: 'none',
     padding: 0,
