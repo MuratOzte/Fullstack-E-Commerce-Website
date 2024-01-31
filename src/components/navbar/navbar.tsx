@@ -3,10 +3,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { log } from 'console';
 
 const Navbar = () => {
     const pathname: string = usePathname();
+
     const links: { text: string; url: string }[] = [
         { text: 'Login', url: '/login' },
         { text: 'Register', url: '/register' },
