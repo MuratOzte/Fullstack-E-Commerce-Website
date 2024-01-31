@@ -8,9 +8,13 @@ const Navbar = () => {
     const pathname: string = usePathname();
 
     const links: { text: string; url: string }[] = [
-        { text: 'Login', url: '/login' },
-        { text: 'Register', url: '/register' },
         { text: 'Home', url: '/' },
+        { text: 'Mobile Phones', url: '/mobile-phones' },
+        { text: 'Laptops', url: '/laptops' },
+        { text: 'Cameras', url: '/cameras' },
+        { text: 'Headphones', url: '/headphones' },
+        { text: 'Speakers', url: '/speakers' },
+        { text: 'Watches', url: '/watches' },
     ];
 
     const isCurrentLink = (url: string) => {
