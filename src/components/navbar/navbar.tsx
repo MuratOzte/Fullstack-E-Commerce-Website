@@ -1,14 +1,16 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import { motion } from 'framer-motion';
+import { IconButton } from '@mui/material';
+import logo from '@/assets/logo.png';
 
 const Navbar = () => {
     const pathname: string = usePathname();
 
     const links: { text: string; url: string }[] = [
-        { text: 'Home', url: '/' },
         { text: 'Mobile Phones', url: '/mobile-phones' },
         { text: 'Laptops', url: '/laptops' },
         { text: 'Cameras', url: '/cameras' },
@@ -24,6 +26,11 @@ const Navbar = () => {
     return (
         <nav style={navStyle}>
             <ul style={ulStyle}>
+                <Link href="/" style={logoLinkStyle}>
+                    <Image src={logo} alt="logo" width={32} height={32} />
+                    <p style={{ marginLeft: '1%' }}>E-commerce</p>
+                </Link>
+
                 {links.map((e) => {
                     return (
                         <motion.li
@@ -67,6 +74,14 @@ const navStyle: React.CSSProperties = {
 const currentLinkStyle: React.CSSProperties = {
     borderBottom: '2px solid white',
     padding: 3,
+};
+
+const logoLinkStyle: React.CSSProperties = {
+    position: 'absolute',
+    top: '2%',
+    left: '10%',
+    alignItems: 'center',
+    display: 'flex',
 };
 
 export default Navbar;

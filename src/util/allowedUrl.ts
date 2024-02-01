@@ -1,5 +1,5 @@
 export default function allowedUrl(url: string) {
-    const allowedUrls = [
+    const allowedUrls: string[] = [
         'mobile-phones',
         'laptops',
         'headphones',

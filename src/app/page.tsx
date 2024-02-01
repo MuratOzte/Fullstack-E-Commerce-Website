@@ -4,25 +4,16 @@ import CategoryCards from '@/components/home/CatergoryCard';
 export default function Home() {
     return (
         <>
-            <Grid
-                container
-                style={{
-                    display: 'flex',
-                    justifyContent: 'flex-end',
-                    alignItems: 'flex-end',
-                }}
-            >
+            <Grid container style={mainScreenStyles}>
                 <Grid item xs={6}>
                     <ImageSlider />
                 </Grid>
-                <Grid item xs={6} sx={{ position: 'absolute', right: '10%' }}>
+                <Grid item xs={6} sx={typographiesBoxStyles}>
                     <Typography
                         variant="h2"
                         component="h2"
                         gutterBottom
-                        sx={{
-                            fontFamily: 'Work Sans sans-serif',
-                        }}
+                        sx={typographyFontFamily}
                     >
                         Shop smart,
                     </Typography>
@@ -30,9 +21,7 @@ export default function Home() {
                         variant="h2"
                         component="h2"
                         gutterBottom
-                        sx={{
-                            fontFamily: 'Work Sans sans-serif',
-                        }}
+                        sx={typographyFontFamily}
                     >
                         Live stylish,
                     </Typography>
@@ -40,9 +29,7 @@ export default function Home() {
                         variant="h6"
                         component="h6"
                         gutterBottom
-                        sx={{
-                            fontFamily: 'Work Sans sans-serif',
-                        }}
+                        sx={typographyFontFamily}
                     >
                         Elevate Your Lifestyle with Our Unbeatable Deals,
                     </Typography>
@@ -54,3 +41,18 @@ export default function Home() {
         </>
     );
 }
+
+const typographyFontFamily: React.CSSProperties = {
+    fontFamily: 'Work Sans sans-serif',
+};
+
+const typographiesBoxStyles: React.CSSProperties = {
+    position: 'absolute',
+    right: '10%',
+};
+
+const mainScreenStyles: React.CSSProperties = {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+};
