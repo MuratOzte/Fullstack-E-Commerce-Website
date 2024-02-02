@@ -4,6 +4,7 @@ const sendProductAction = async (formData: FormData) => {
         price: formData.get('price'),
         description: formData.get('description'),
         image: formData.get('image'),
+        dealer: formData.get('dealer'),
     };
 
     const isInvalidText = (text: string) => {
@@ -28,6 +29,7 @@ const sendProductAction = async (formData: FormData) => {
                     price: product.price,
                     description: product.description,
                     image: product.image,
+                    dealer: product.dealer,
                 }),
             });
 

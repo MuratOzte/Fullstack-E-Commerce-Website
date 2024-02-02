@@ -10,12 +10,12 @@ const Navbar = () => {
     const pathname: string = usePathname();
 
     const links: { text: string; url: string }[] = [
-        { text: 'Mobile Phones', url: '/mobile-phones' },
-        { text: 'Laptops', url: '/laptops' },
-        { text: 'Cameras', url: '/cameras' },
-        { text: 'Headphones', url: '/headphones' },
-        { text: 'Speakers', url: '/speakers' },
-        { text: 'Watches', url: '/watches' },
+        { text: 'Samsung', url: '/samsung' },
+        { text: 'Apple', url: '/apple' },
+        { text: 'Huawei', url: '/huawei' },
+        { text: 'Xiaomi', url: '/xiaomi' },
+        { text: 'Oppo', url: '/oppo' },
+        { text: 'Post Atmaca', url: '/postAtmaca' },
     ];
 
     const isCurrentLink = (url: string) => {

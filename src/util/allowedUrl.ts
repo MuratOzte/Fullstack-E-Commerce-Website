@@ -1,11 +1,12 @@
 export default function allowedUrl(url: string) {
     const allowedUrls: string[] = [
-        'mobile-phones',
-        'laptops',
-        'headphones',
-        'cameras',
-        'speakers',
-        'watches',
+        'samsung',
+        'apple',
+        'xiaomi',
+        'oppo',
+        'huawei',
+        'poco',
+        'vivo',
     ];
 
     return allowedUrls.includes(url);
