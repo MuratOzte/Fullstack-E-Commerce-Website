@@ -1,40 +1,29 @@
-'use client'
-import { useEffect } from 'react';
+'use client';
+import sendProductAction from '@/lib/sendProductAction';
 
 const PostAtmacaPage = () => {
-    useEffect(() => {
-        const postData = async () => {
-            try {
-                const response = await fetch('/api/create-product', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        name: 'Atmaca',
-                        price: 1000,
-                        description: 'Atmaca is a good product',
-                    }),
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log(data);
-                } else {
-                    console.error(
-                        'Failed to create product:',
-                        response.statusText
-                    );
-                }
-            } catch (error) {
-                console.error('Error during API call:', error);
-            }
-        };
-
-        postData();
-    }, []);
-
-    return <h1>Post atmaca page</h1>;
+    return (
+        <>
+            <h1>Post Atmaca Page</h1>
+            <form action={sendProductAction}>
+                <input type="text" placeholder="Name" name="name" />
+                <br />
+                <input type="text" placeholder="price" name="price" />
+                <br />
+                <input
+                    type="text"
+                    placeholder="description"
+                    name="description"
+                />
+                <br />
+                <input type="text" placeholder="image" name="image" />
+                <br />
+                <input type="text" placeholder="dealer" name="dealer" />
+                <br />
+                <button type="submit">Submit</button>
+            </form>
+        </>
+    );
 };
 
 export default PostAtmacaPage;
