@@ -78,11 +78,12 @@ const currentLinkStyle: React.CSSProperties = {
 
 const logoLinkStyle: React.CSSProperties = {
     position: 'absolute',
-    top: '2%',
+    top: '1%',
     left: '6%',
     alignItems: 'center',
     marginBottom: '3%',
     display: 'flex',
+    padding: '0.3%',
 };
 
 export default Navbar;

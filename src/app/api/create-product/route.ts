@@ -2,25 +2,37 @@ import { MongoClient } from 'mongodb';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+// export async function POST(req: any, res: any) {
+//     try {
+//         const body = await req.json();
+//         console.log(body);
+//         return NextResponse.json({ message: 'selam' });
+//     } catch (e) {
+//         console.log(e);
+//     }
+// }
+
+export async function POST(req: any, res: any) {
+    let client;
     try {
-        if (req.method === 'POST') {
-            const client = await MongoClient.connect(
-                process.env.MONGODB_URI || ''
-            );
+        client = await MongoClient.connect(process.env.MONGODB_URI!);
 
-            const deneme = JSON.parse(req.body);
-            console.log(deneme);
+        const data = await req.json();
 
-            const db = client.db('e-commerce');
-            const categoriesCollection = db.collection('products');
-            // categoriesCollection.insertOne(data);
-            // console.log(data);
-            client.close();
-            return NextResponse.json({ message: 'merhaba' });
-        }
+        const db = client.db('e-commerce');
+        const categoriesCollection = db.collection('products');
+        await categoriesCollection.insertOne(data);
+
+        return NextResponse.json({
+            message: 'successfully inserted',
+            data: data,
+        });
     } catch (e) {
-        res.status(500).json({ message: 'Unable to connect to database' });
+        console.log(e);
+    } finally {
+        if (client) {
+            await client.close();
+        }
     }
 }
 
