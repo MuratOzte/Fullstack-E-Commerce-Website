@@ -19,7 +19,7 @@ const EachCategoryCard: React.FC<{
         >
             <Image
                 src={
-                    'https://img.freepik.com/free-photo/new-phone-11-pro-white-background-close-up_1142-41560.jpg?t=st=1706725000~exp=1706728600~hmac=fd3ddf928f13341ffbb72bf22c10d48f466728ed2fb06acd6d3bdfc84aefcc47&w=996'
+                    'https://getmobil.com/_next/image/?url=https%3A%2F%2Fassets.getmobil.com%2Fuploads%2F6243%2Fgetmobil-apple-iphonesex-white-00png.png&w=640&q=75'
                 }
                 alt={alt}
                 width={150}

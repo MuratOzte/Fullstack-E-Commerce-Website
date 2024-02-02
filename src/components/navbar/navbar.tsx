@@ -1,11 +1,10 @@
 'use client';
-import Link from 'next/link';
+import logo from '@/assets/logo.png';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import { motion } from 'framer-motion';
-import { IconButton } from '@mui/material';
-import logo from '@/assets/logo.png';
 
 const Navbar = () => {
     const pathname: string = usePathname();
@@ -67,6 +66,7 @@ const ulStyle: React.CSSProperties = {
 
 const navStyle: React.CSSProperties = {
     backgroundColor: '#7FC7D9',
+    height: 60,
     padding: 15,
     zIndex: 5,
 };
@@ -79,8 +79,9 @@ const currentLinkStyle: React.CSSProperties = {
 const logoLinkStyle: React.CSSProperties = {
     position: 'absolute',
     top: '2%',
-    left: '10%',
+    left: '6%',
     alignItems: 'center',
+    marginBottom: '3%',
     display: 'flex',
 };
 

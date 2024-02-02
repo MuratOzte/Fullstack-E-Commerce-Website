@@ -4,8 +4,17 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
+                hostname: 'getmobil.com',
+            },
+            {
+                protocol: 'https',
                 hostname: 'img.freepik.com',
             },
+            // Ek başka host adları ekleyebilirsiniz
+            // {
+            //     protocol: 'https',
+            //     hostname: 'anotherhost.com',
+            // },
         ],
     },
 };
