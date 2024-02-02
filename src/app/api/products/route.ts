@@ -10,10 +10,9 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
             );
 
             const db = client.db('e-commerce');
-            const categoriesCollection = db.collection('categories');
+            const categoriesCollection = db.collection('products');
             const categories = await categoriesCollection.find({}).toArray();
 
-            console.log(categories);
             client.close();
             return NextResponse.json({ categories });
         }
