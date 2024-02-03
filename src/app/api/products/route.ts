@@ -10,11 +10,11 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
             );
 
             const db = client.db('e-commerce');
-            const categoriesCollection = db.collection('products');
-            const categories = await categoriesCollection.find({}).toArray();
+            const productsCollection = db.collection('products');
+            const products = await productsCollection.find({}).toArray();
 
             client.close();
-            return NextResponse.json({ categories });
+            return NextResponse.json(products);
         }
     } catch (e) {
         res.status(500).json({ message: 'Unable to connect to database' });
