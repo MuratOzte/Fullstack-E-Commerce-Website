@@ -29,7 +29,7 @@ const CategoryPage: React.FC<{ params: { category: string } }> = ({
     }, []);
 
     useEffect(() => {
-        console.log(scrollTop.toFixed(0));
+        // console.log(scrollTop.toFixed(0));
     }, [scrollTop]);
 
     return (
@@ -38,9 +38,11 @@ const CategoryPage: React.FC<{ params: { category: string } }> = ({
                 sx={{
                     backgroundColor: 'red',
                     width: 'auto',
-                    height: '100vh',
-                    marginTop: scrollTop > 60 ? `${scrollTop - 60}px` : '0px',
-                    transition: 'margin-top 0.5s',
+                    height: scrollTop > 60 ? `80vh` : '85vh',
+                    marginTop: scrollTop > 60 ? `${scrollTop}px` : '20px',
+                    transition: 'all 0.5s ease',
+                    overflowY: 'auto',
+                    ml: 'auto',
                 }}
                 item
                 xs={2}
@@ -52,11 +54,12 @@ const CategoryPage: React.FC<{ params: { category: string } }> = ({
                     backgroundColor: 'yellow',
                     height: '300vh',
                     overflowY: 'auto',
+                    marginX: 'auto',
+                    mt: '1.5%',
                 }}
                 item
-                xs={10}
+                xs={9}
             >
-                <h2>Scroll Top: {scrollTop.toFixed(2)}</h2>
             </Grid>
         </Grid>
     );

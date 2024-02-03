@@ -14,8 +14,7 @@ export default function App() {
             <div
                 style={{
                     border: '3px solid black',
-                    overflow: 'scroll',
-                    height: '100vh',
+                    height: '80vh',
                 }}
                 onScroll={handleScroll}
             >

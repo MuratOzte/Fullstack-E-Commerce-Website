@@ -1,11 +1,11 @@
 'use client';
 import logo from '@/assets/logo.png';
-import { motion } from 'framer-motion';
+import { delay, motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-
+import { useState, useEffect } from 'react';
 const Navbar = () => {
     const pathname: string = usePathname();
 
@@ -22,8 +22,31 @@ const Navbar = () => {
         return pathname == url;
     };
 
+    const [scrollTop, setScrollTop] = useState(0);
+
+    const handleScroll = () => {
+        setScrollTop(window.scrollY);
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
-        <nav style={navStyle}>
+        <motion.nav
+            style={{
+                backgroundColor: '#7FC7D9',
+                padding: 15,
+                zIndex: 5,
+            }}
+            animate={{ height: scrollTop > 60 ? 0 : 60 }}
+            exit={{ height: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+        >
             <ul style={ulStyle}>
                 <Link href="/" style={logoLinkStyle}>
                     <Image src={logo} alt="logo" width={32} height={32} />
@@ -50,7 +73,7 @@ const Navbar = () => {
                     );
                 })}
             </ul>
-        </nav>
+        </motion.nav>
     );
 };
 
