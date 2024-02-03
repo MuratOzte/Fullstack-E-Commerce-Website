@@ -36,33 +36,4 @@ const CategoryCards = (props: any) => {
     );
 };
 
-export async function getServerSideProps() {
-    try {
-        const client = await MongoClient.connect(
-            'mongodb+srv://mo2553481:nvEDS8KehYUsk9RE@muratdb.yhxcibw.mongodb.net/e-commerce?retryWrites=true&w=majority'
-        );
 
-        const db = client.db();
-        const categoriesCollection = db.collection('categories');
-
-        const categories = await categoriesCollection.find({}).toArray();
-        console.log(categories);
-
-        client.close();
-
-        return {
-            props: {
-                categories,
-            },
-        };
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        return {
-            props: {
-                categories: [],
-            },
-        };
-    }
-}
-
-export default CategoryCards;
