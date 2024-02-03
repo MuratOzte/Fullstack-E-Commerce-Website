@@ -41,7 +41,7 @@ export async function PUT(req: any, res: any) {
 
         const db = client.db('e-commerce');
         const prodcutsCollection = db.collection('products');
-        await prodcutsCollection.updateOne(
+        await prodcutsCollection.updateMany(
             { name: data.name },
             {
                 $set: {
@@ -50,6 +50,7 @@ export async function PUT(req: any, res: any) {
                     ram: data.ram,
                     storage: data.storage,
                     battery: data.battery,
+                    comments: [],
                 },
             }
         );
