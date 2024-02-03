@@ -1,9 +1,8 @@
-import { MongoClient } from 'mongodb';
 import CategoryCards from '@/components/home/CatergoryCard';
 import ImageSlider from '@/components/home/image-slider';
 import { Grid, Typography } from '@mui/material';
-export default function Home(props: { products: any }) {
-    console.log(props.products);
+
+export default function Home() {
     return (
         <>
             <Grid container style={mainScreenStyles}>
@@ -58,4 +57,3 @@ const mainScreenStyles: React.CSSProperties = {
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
 };
-

@@ -20,6 +20,16 @@ const PostAtmacaPage = () => {
                 <br />
                 <input type="text" placeholder="dealer" name="dealer" />
                 <br />
+                <input type="text" placeholder="star" name="star" />
+                <br />
+                <input type="text" placeholder="sellCount" name="sellCount" />
+                <br />
+                <input type="text" placeholder="Ram" name="ram" />
+                <br />
+                <input type="text" placeholder="Storage" name="storage" />
+                <br />
+                <input type="text" placeholder="Battery" name="battery" />
+                <br />
                 <button type="submit">Submit</button>
             </form>
         </>

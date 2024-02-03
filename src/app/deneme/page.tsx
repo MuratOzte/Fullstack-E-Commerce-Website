@@ -1,6 +1,4 @@
-import { Suspense, useState } from 'react';
-
-const getProducts = () => {
+const getProducts = async () => {
     return fetch('http://localhost:3000/api/products', {
         cache: 'force-cache',
     }).then((res) => {
@@ -14,6 +12,7 @@ interface Product {
     name: string;
     price: number;
     description: string;
+    dealer: string;
 }
 
 const Deneme = async () => {
@@ -23,14 +22,12 @@ const Deneme = async () => {
         <>
             <h1>Products</h1>
             <ul>
-                <Suspense fallback={<div>Loading....</div>}>
-                    {products &&
-                        products.map((product) => (
-                            <li key={product.id}>
-                                {product.name} - {product.price}
-                            </li>
-                        ))}
-                </Suspense>
+                {products &&
+                    products.map((product) => (
+                        <li key={product.id}>
+                            {product.name} - {product.price} - {product.dealer}
+                        </li>
+                    ))}
             </ul>
         </>
     );

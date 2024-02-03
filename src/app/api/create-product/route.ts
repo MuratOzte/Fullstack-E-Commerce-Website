@@ -2,16 +2,6 @@ import { MongoClient } from 'mongodb';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
 
-// export async function POST(req: any, res: any) {
-//     try {
-//         const body = await req.json();
-//         console.log(body);
-//         return NextResponse.json({ message: 'selam' });
-//     } catch (e) {
-//         console.log(e);
-//     }
-// }
-
 export async function POST(req: any, res: any) {
     let client;
     try {

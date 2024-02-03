@@ -1,4 +1,4 @@
-const sendProductAction = async (formData: FormData) => {
+const updateProductAction = async (formData: FormData) => {
     const product = {
         name: formData.get('name'),
         price: formData.get('price'),
@@ -26,7 +26,7 @@ const sendProductAction = async (formData: FormData) => {
     const postData = async () => {
         try {
             const response = await fetch('/api/create-product', {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -59,4 +59,4 @@ const sendProductAction = async (formData: FormData) => {
     await postData();
 };
 
-export default sendProductAction;
+export default updateProductAction;
