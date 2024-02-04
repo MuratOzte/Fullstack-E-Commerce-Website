@@ -13,15 +13,6 @@ const sendProductAction = async (formData: FormData) => {
         comments: [],
     };
 
-    const isInvalidText = (text: string) => {
-        return text.trim() === '' || !text;
-    };
-
-    for (const [key, value] of Object.entries(product)) {
-        if (isInvalidText(value as string)) {
-            throw new Error(`Invalid ${key}`);
-        }
-    }
 
     const postData = async () => {
         try {

@@ -1,8 +1,7 @@
 import { MongoClient } from 'mongodb';
-import { NextApiRequest, NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: any, res: any) {
     try {
         if (req.method === 'GET') {
             const client = await MongoClient.connect(
@@ -20,5 +19,3 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
         res.status(500).json({ message: 'Unable to connect to database' });
     }
 }
-
-

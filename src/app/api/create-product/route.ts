@@ -26,7 +26,7 @@ export async function POST(req: any, res: any) {
     }
 }
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: any, res: any) {
     if (req.method === 'GET') {
         return NextResponse.json({ message: 'Create Product api' });
     }
