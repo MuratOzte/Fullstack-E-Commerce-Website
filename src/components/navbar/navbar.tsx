@@ -40,12 +40,14 @@ const Navbar = () => {
         <motion.nav
             style={{
                 backgroundColor: '#7FC7D9',
-                padding: 15,
+                padding: 10,
                 zIndex: 5,
+                position: 'fixed',
+                width: '100%',
+                top: 0,
             }}
-            animate={{ height: scrollTop > 60 ? 0 : 60 }}
-            exit={{ height: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            animate={{ y: scrollTop > 60 ? -100 : 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
         >
             <ul style={ulStyle}>
                 <Link href="/" style={logoLinkStyle}>

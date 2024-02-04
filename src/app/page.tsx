@@ -1,4 +1,3 @@
-import CategoryCards from '@/components/home/CatergoryCard';
 import ImageSlider from '@/components/home/image-slider';
 import { Grid, Typography } from '@mui/material';
 
@@ -35,9 +34,6 @@ export default function Home() {
                         Elevate Your Lifestyle with Our Unbeatable Deals,
                     </Typography>
                 </Grid>
-            </Grid>
-            <Grid container>
-                <CategoryCards />
             </Grid>
         </>
     );

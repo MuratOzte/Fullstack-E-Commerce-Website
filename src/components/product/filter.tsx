@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import RangeSlider from './priceSlider';
 
-export default function App() {
+export default function Filter() {
     const [scrollTop, setScrollTop] = useState(0);
 
     const handleScroll = (event: React.UIEvent<HTMLDivElement>) => {
@@ -8,19 +9,35 @@ export default function App() {
     };
 
     return (
-        <div>
-            <h2>Scroll Top: {scrollTop.toFixed(2)}</h2>
-
+        <div style={{ overflow: 'hidden' }}>
             <div
                 style={{
-                    border: '3px solid black',
-                    height: '80vh',
+                    marginTop: '15%',
+                    height: '20vh',
+                    border: '2px solid black',
+                    display: 'flex',
+                    justifyContent: 'center',
                 }}
-                onScroll={handleScroll}
             >
-                {[...Array(100)].map((_, index) => (
-                    <p key={index}>Content {index}</p>
-                ))}
+                <RangeSlider />
+            </div>
+            <div
+                style={{
+                    marginTop: '15%',
+                    height: '20vh',
+                    border: '2px solid black',
+                }}
+            >
+                Price Selector
+            </div>
+            <div
+                style={{
+                    marginTop: '15%',
+                    height: '20vh',
+                    border: '2px solid black',
+                }}
+            >
+                Price Selector
             </div>
         </div>
     );
