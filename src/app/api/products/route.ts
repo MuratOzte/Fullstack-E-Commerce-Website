@@ -12,27 +12,8 @@ export async function GET(req: any, res: any) {
         client.close();
         return NextResponse.json(products);
     } catch (e) {
-        res.status(500).json({ message: 'Unable to connect to database' });
+        console.log(e);
     }
 }
 
-export async function POST(req: any, res: any) {
-    let client;
-    try {
-        client = await MongoClient.connect(process.env.MONGODB_URI || '');
-
-        const data = await req.json();
-
-        const db = client.db('e-commerce');
-        const productsCollection = db.collection('products');
-        await productsCollection.insertOne(data);
-        client.close();
-
-        return NextResponse.json({
-            message: 'successfully inserted',
-            data: data,
-        });
-    } catch (e) {
-        res.status(500).json({ message: 'Unable to connect to database' });
-    }
-}
+export async function POST(req: any, res: any) {}
