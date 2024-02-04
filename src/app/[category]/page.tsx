@@ -11,10 +11,10 @@ import allowedUrl from '@/util/allowedUrl';
 import Filter from '@/components/product/filter';
 import Logo from '@/assets/logo.png';
 
-const CategoryPage: React.FC<{ params: { category: string } }> = ({
+const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
     params,
 }) => {
-    if (!allowedUrl(params?.category))
+    if (!allowedUrl(params?.category ?? ''))
         return <div>{params?.category} Not Found</div>;
 
     const [scrollTop, setScrollTop] = useState(0);
