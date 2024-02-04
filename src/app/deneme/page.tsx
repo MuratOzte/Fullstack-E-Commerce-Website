@@ -1,11 +1,5 @@
-const getProducts = async () => {
-    return fetch('http://localhost:3000/api/products', {
-        cache: 'force-cache',
-    }).then((res) => {
-        const data = res.json();
-        return data;
-    });
-};
+'use client';
+import useSWR from 'swr';
 
 interface Product {
     id: number;
@@ -15,22 +9,25 @@ interface Product {
     dealer: string;
 }
 
-const Deneme = async () => {
-    const products: Product[] = await getProducts();
+function ProductSWR() {
+    const { data, error } = useSWR('products', async () => {
+        const response = await fetch('/api/products');
+        const data: Product[] = await response.json();
+        return data;
+    });
+
+    if (error) return <div>failed to load</div>;
+    if (!data) return <div>loading...</div>;
 
     return (
-        <>
-            <h1>Products</h1>
-            <ul>
-                {products &&
-                    products.map((product) => (
-                        <li key={product.id}>
-                            {product.name} - {product.price} - {product.dealer}
-                        </li>
-                    ))}
-            </ul>
-        </>
+        <div>
+            {data.map((product) => (
+                <div key={product.id}>
+                    {product.name} - {product.price} - {product.dealer}
+                </div>
+            ))}
+        </div>
     );
-};
+}
 
-export default Deneme;
+export default ProductSWR;

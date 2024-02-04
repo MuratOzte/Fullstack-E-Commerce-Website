@@ -16,6 +16,7 @@ const Navbar = () => {
         { text: 'Xiaomi', url: '/xiaomi' },
         { text: 'Oppo', url: '/oppo' },
         { text: 'Post Atmaca', url: '/postAtmaca' },
+        { text: 'Deneme', url: '/deneme' },
     ];
 
     const isCurrentLink = (url: string) => {
