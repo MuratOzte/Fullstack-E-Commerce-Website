@@ -1,5 +1,4 @@
 import { MongoClient } from 'mongodb';
-import { NextApiRequest, NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: any, res: any) {
@@ -12,17 +11,14 @@ export async function POST(req: any, res: any) {
         const db = client.db('e-commerce');
         const prodcutsCollection = db.collection('products');
         await prodcutsCollection.insertOne(data);
+        client.close;
 
         return NextResponse.json({
             message: 'successfully inserted',
             data: data,
         });
     } catch (e) {
-        console.log(e);
-    } finally {
-        if (client) {
-            await client.close();
-        }
+        res.status(500).json({ message: 'Unable to connect to database' });
     }
 }
 
