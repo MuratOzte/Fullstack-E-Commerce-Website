@@ -1,3 +1,5 @@
+import Species from './Species';
+import StarSection from './StarSection';
 import RangeSlider from './priceSlider';
 
 export default function Filter() {
@@ -13,23 +15,23 @@ export default function Filter() {
             >
                 <RangeSlider />
             </div>
+
             <div
                 style={{
                     marginTop: '15%',
                     height: '20vh',
-                    border: '2px solid black',
                 }}
             >
-                Price Selector
+                <StarSection />
             </div>
             <div
                 style={{
                     marginTop: '15%',
                     height: '20vh',
-                    border: '2px solid black',
+                    marginLeft: '5%',
                 }}
             >
-                Price Selector
+                <Species />
             </div>
         </div>
     );

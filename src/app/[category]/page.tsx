@@ -42,7 +42,12 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
                     {scrollTop > 60 && (
                         <motion.div
                             style={LogoContainerStyle}
-                            onClick={() => window.scrollTo(0, 0)}
+                            onClick={() =>
+                                window.scrollTo({
+                                    top: 0,
+                                    behavior: 'smooth',
+                                })
+                            }
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
@@ -58,10 +63,10 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
                         </motion.div>
                     )}
                 </AnimatePresence>
-                <Grid sx={filterGridStyles} item xs={2}>
+                <Grid sx={filterGridStyles} item xs={3}>
                     <Filter />
                 </Grid>
-                <Grid sx={productGridStyles} item xs={9}></Grid>
+                <Grid sx={productGridStyles} item xs={8}></Grid>
             </Grid>
         </>
     );
@@ -70,7 +75,7 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
 const LogoContainerStyle: React.CSSProperties = {
     position: 'fixed',
     top: '6%',
-    left: '5%',
+    left: '8%',
     display: 'flex',
     alignItems: 'center',
     gap: '5px',
@@ -91,7 +96,7 @@ const productGridStyles: React.CSSProperties = {
     height: '300vh',
     overflowY: 'auto',
     margin: 'auto',
-    marginLeft: '20%',
+    marginLeft: '30%',
     marginTop: '5%',
 };
 
