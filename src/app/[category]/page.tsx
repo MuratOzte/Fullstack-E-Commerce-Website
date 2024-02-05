@@ -82,7 +82,9 @@ const LogoContainerStyle: React.CSSProperties = {
 };
 
 const filterGridStyles: React.CSSProperties = {
-    backgroundColor: 'red',
+    backgroundColor: '#C7C8CC',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+    borderRadius: '8px',
     width: '20%',
     height: '85%',
     transition: 'all 0.3s ease',

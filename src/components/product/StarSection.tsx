@@ -12,26 +12,39 @@ export default function StarRate() {
     ];
 
     return (
-        <div
-            style={{
-                display: 'flex',
-                margin: 10,
-                marginLeft:'15%',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-            }}
-        >
+        <div style={divStyle}>
             {texts.map((text, index) => (
                 <div
                     key={index}
-                    style={{ display: 'flex', justifyContent: 'flex-start' }}
+                    style={innerDivStyle}
                     onClick={() => setSelected(index)}
                 >
                     <input type="checkbox" checked={selected === index} />
-                    <StarRateIcon sx={{ color: 'yellow', ml: 1 }} />
-                    <p style={{ marginTop: '2px', marginLeft: 10 }}>{text}</p>
+                    <StarRateIcon sx={starStyle} />
+                    <p style={pStyle}>{text}</p>
                 </div>
             ))}
         </div>
     );
 }
+
+const divStyle: React.CSSProperties = {
+    display: 'flex',
+    margin: 10,
+    marginLeft: '15%',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+};
+
+const innerDivStyle: React.CSSProperties = {
+    display: 'flex',
+    justifyContent: 'flex-start',
+};
+
+const pStyle: React.CSSProperties = {
+    marginTop: '2px',
+    marginLeft: 10,
+    color: 'black',
+};
+
+const starStyle: React.CSSProperties = { color: 'orange', marginLeft: 1 };

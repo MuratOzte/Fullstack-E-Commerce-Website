@@ -37,11 +37,7 @@ export default function MinimumDistanceSlider() {
     return (
         <>
             <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    textAlign: 'center',
-                }}
+                style={divStyle}
             >
                 <Slider
                     sx={{ width: 200 }}
@@ -55,14 +51,14 @@ export default function MinimumDistanceSlider() {
                     step={50}
                 />
                 <PriceSliderInput
-                    title="min price"
+                    title="Minimum Price"
                     value={value1[0]}
                     onChange={(e) => setValue1([+e.target.value, value1[1]])}
                     bigValue={value1[1]}
                     smallValue={value1[0]}
                 />
                 <PriceSliderInput
-                    title="max price"
+                    title="Maximum Price"
                     value={value1[1]}
                     onChange={(e) => setValue1([value1[0], +e.target.value])}
                     bigValue={value1[1]}
@@ -71,4 +67,11 @@ export default function MinimumDistanceSlider() {
             </div>
         </>
     );
+}
+
+
+const divStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    textAlign: 'center',
 }
