@@ -1,6 +1,7 @@
 import { TextField } from '@mui/material';
 import Slider from '@mui/material/Slider';
 import * as React from 'react';
+import PriceSliderInput from './PriceSliderInput';
 
 function valuetext(value: number) {
     return `${value}$`;
@@ -34,43 +35,40 @@ export default function MinimumDistanceSlider() {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <Slider
-                sx={{ width: 200 }}
-                value={value1}
-                onChange={handleChange1}
-                valueLabelDisplay="on"
-                getAriaValueText={valuetext}
-                disableSwap
-                min={0}
-                max={1500}
-                step={50}
-            />
-
-            <TextField
-                value={value1[0]}
-                sx={{ width: '40%' }}
-                onChange={(e) => setValue1([+e.target.value, value1[1]])}
-                inputProps={{
-                    step: 50,
-                    min: 0,
-                    max: 1500,
-                    type: 'number',
-                    'aria-labelledby': 'input-slider',
+        <>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    textAlign: 'center',
                 }}
-            />
-            <TextField
-                value={value1[1]}
-                onChange={(e) => setValue1([value1[0], +e.target.value])}
-                aria-label="Minimum distance"
-                inputProps={{
-                    step: 50,
-                    min: 0,
-                    max: 1500,
-                    type: 'number',
-                    'aria-labelledby': 'input-slider',
-                }}
-            />
-        </div>
+            >
+                <Slider
+                    sx={{ width: 200 }}
+                    value={value1}
+                    onChange={handleChange1}
+                    valueLabelDisplay="on"
+                    getAriaValueText={valuetext}
+                    disableSwap
+                    min={0}
+                    max={1500}
+                    step={50}
+                />
+                <PriceSliderInput
+                    title="min price"
+                    value={value1[0]}
+                    onChange={(e) => setValue1([+e.target.value, value1[1]])}
+                    bigValue={value1[1]}
+                    smallValue={value1[0]}
+                />
+                <PriceSliderInput
+                    title="max price"
+                    value={value1[1]}
+                    onChange={(e) => setValue1([value1[0], +e.target.value])}
+                    bigValue={value1[1]}
+                    smallValue={value1[0]}
+                />
+            </div>
+        </>
     );
 }

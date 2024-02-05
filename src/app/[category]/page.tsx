@@ -81,7 +81,6 @@ const filterGridStyles: React.CSSProperties = {
     width: '20%',
     height: '85%',
     transition: 'all 0.3s ease',
-    overflowY: 'scroll',
     marginTop: '5%',
     marginLeft: '2%',
     position: 'fixed',
