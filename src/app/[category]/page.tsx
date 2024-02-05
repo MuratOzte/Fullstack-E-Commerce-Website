@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react';
 // functions
 import allowedUrl from '@/util/allowedUrl';
 // components
-import Filter from '@/components/product/filter';
+import Filter from '@/components/filter/filter';
 import Logo from '@/assets/logo.png';
 
 const CategoryPage: React.FC<{ params: { category: string | null } }> = ({

@@ -29,7 +29,7 @@ export default function Filter() {
             <Divider />
             <div
                 style={{
-                    marginTop: '15%',
+                    marginTop: '10%',
                     height: '20vh',
                     marginLeft: '5%',
                 }}

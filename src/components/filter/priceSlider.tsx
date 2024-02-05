@@ -36,11 +36,9 @@ export default function MinimumDistanceSlider() {
 
     return (
         <>
-            <div
-                style={divStyle}
-            >
+            <div style={divStyle}>
                 <Slider
-                    sx={{ width: 200 }}
+                    sx={{ width: 200, color: '#7D7C7C' }}
                     value={value1}
                     onChange={handleChange1}
                     valueLabelDisplay="on"
@@ -69,9 +67,8 @@ export default function MinimumDistanceSlider() {
     );
 }
 
-
 const divStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'center',
-}
+};
