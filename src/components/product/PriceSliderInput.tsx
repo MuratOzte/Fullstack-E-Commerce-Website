@@ -43,6 +43,7 @@ const pStyle: React.CSSProperties = {
     color: 'black',
     fontSize: '16px',
     fontFamily: 'Arial, sans-serif',
+    textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
 };
 
 const inputStyle: React.CSSProperties = {
@@ -55,4 +56,6 @@ const inputStyle: React.CSSProperties = {
     borderRadius: '5px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
     border: '1px solid #ccc',
+    textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+
 };

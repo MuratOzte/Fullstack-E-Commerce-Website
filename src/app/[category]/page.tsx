@@ -66,7 +66,7 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
                 <Grid sx={filterGridStyles} item xs={3}>
                     <Filter />
                 </Grid>
-                <Grid sx={productGridStyles} item xs={8}></Grid>
+                <Grid sx={productGridStyles} item xs={9}></Grid>
             </Grid>
         </>
     );
@@ -79,6 +79,7 @@ const LogoContainerStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     gap: '5px',
+    cursor: 'pointer',
 };
 
 const filterGridStyles: React.CSSProperties = {
@@ -97,8 +98,8 @@ const productGridStyles: React.CSSProperties = {
     backgroundColor: 'yellow',
     height: '300vh',
     overflowY: 'auto',
-    margin: 'auto',
-    marginLeft: '30%',
+    marginLeft: '25%',
+    marginRight: '2%',
     marginTop: '5%',
 };
 

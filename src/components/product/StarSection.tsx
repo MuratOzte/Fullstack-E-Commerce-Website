@@ -19,7 +19,11 @@ export default function StarRate() {
                     style={innerDivStyle}
                     onClick={() => setSelected(index)}
                 >
-                    <input type="checkbox" checked={selected === index} />
+                    <input
+                        type="checkbox"
+                        style={checkBoxStyle}
+                        checked={selected === index}
+                    />
                     <StarRateIcon sx={starStyle} />
                     <p style={pStyle}>{text}</p>
                 </div>
@@ -27,6 +31,15 @@ export default function StarRate() {
         </div>
     );
 }
+
+const checkBoxStyle: React.CSSProperties = {
+    cursor: 'pointer',
+    width: '20px',
+    height: '20px',
+    accentColor: 'gray',
+    border: '0.25rem solid green',
+    borderRadius: '50%',
+};
 
 const divStyle: React.CSSProperties = {
     display: 'flex',
@@ -45,6 +58,12 @@ const pStyle: React.CSSProperties = {
     marginTop: '2px',
     marginLeft: 10,
     color: 'black',
+    textShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+    fontSize: '16px',
+    fontFamily: 'Arial, sans-serif',
 };
 
-const starStyle: React.CSSProperties = { color: 'orange', marginLeft: 1 };
+const starStyle: React.CSSProperties = {
+    color: 'orange',
+    marginLeft: 1,
+};

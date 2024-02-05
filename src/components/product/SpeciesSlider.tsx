@@ -1,3 +1,19 @@
+/*
+
+
+    **********  THIS FILE IS NOT IN USE  **********
+    **********  THIS FILE IS NOT IN USE  **********
+    **********  THIS FILE IS NOT IN USE  **********
+    **********  THIS FILE IS NOT IN USE  **********
+    **********  THIS FILE IS NOT IN USE  **********
+    **********  THIS FILE IS NOT IN USE  **********
+    **********  THIS FILE IS NOT IN USE  **********
+    **********  THIS FILE IS NOT IN USE  **********
+
+
+
+*/
+
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
@@ -48,11 +64,10 @@ const SpeciesSlider: React.FC<Props> = ({
     };
 
     return (
-        <Box
-            sx={boxStyle}
-        >
+        <Box sx={boxStyle}>
             <p>{title}</p>
             <Slider
+                sx={{ width: 200, color: '#61677A' }}
                 value={value1}
                 onChange={handleChange1}
                 valueLabelDisplay="auto"
@@ -68,11 +83,10 @@ const SpeciesSlider: React.FC<Props> = ({
 
 export default SpeciesSlider;
 
-
 const boxStyle: React.CSSProperties = {
     width: 250,
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
     gap: 4,
-}
+};
