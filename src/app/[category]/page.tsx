@@ -1,15 +1,18 @@
 'use client';
 // packages
-import { Grid, Container } from '@mui/material';
+import { Grid } from '@mui/material';
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
 //hooks
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 // functions
 import allowedUrl from '@/util/allowedUrl';
+import { fetchProducts } from '@/GlobalRedux/slices/productsSlice';
 // components
-import Filter from '@/components/filter/filter';
 import Logo from '@/assets/logo.png';
+import Filter from '@/components/filter/filter';
+import Card from '@/components/product/card';
 
 const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
     params,
@@ -17,6 +20,7 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
     if (!allowedUrl(params?.category ?? ''))
         return <div>{params?.category} Not Found</div>;
 
+    const dispatch = useDispatch();
     const [scrollTop, setScrollTop] = useState(0);
 
     const handleScroll = () => {
@@ -25,15 +29,12 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
+        dispatch(fetchProducts() as any);
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
-    useEffect(() => {
-        // console.log(scrollTop.toFixed(0));
-    }, [scrollTop]);
 
     return (
         <>
@@ -66,7 +67,9 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
                 <Grid sx={filterGridStyles} item xs={3}>
                     <Filter />
                 </Grid>
-                <Grid sx={productGridStyles} item xs={9}></Grid>
+                <Grid sx={productGridStyles} item xs={9}>
+                    <Card />
+                </Grid>
             </Grid>
         </>
     );
@@ -95,7 +98,6 @@ const filterGridStyles: React.CSSProperties = {
 };
 
 const productGridStyles: React.CSSProperties = {
-    backgroundColor: 'yellow',
     height: '300vh',
     overflowY: 'auto',
     marginLeft: '25%',

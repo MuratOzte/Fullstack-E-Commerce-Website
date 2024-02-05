@@ -21,7 +21,7 @@ const initialState: products = {
 const productSlice = createSlice({
     name: 'products',
     initialState,
-    reducers: {}, // Add an empty object for reducers
+    reducers: {},
     extraReducers(builder) {
         builder.addCase(fetchProducts.pending, (state) => {
             state.isloading = true;
