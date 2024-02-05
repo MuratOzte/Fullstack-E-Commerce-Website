@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-import { NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 
 export async function GET() {
     try {
@@ -10,13 +10,13 @@ export async function GET() {
         const products = await productsCollection.find({}).toArray();
 
         client.close();
-        return NextResponse.json(products);
+        return new Response(JSON.stringify(products));
     } catch (e) {
         console.log(e);
     }
 }
 
-export async function PUT(req: any, res: any) {
+export async function PUT(req: NextRequest,) {
     let client;
     try {
         client = await MongoClient.connect(process.env.MONGODB_URI!);
@@ -38,16 +38,10 @@ export async function PUT(req: any, res: any) {
                 },
             }
         );
+        client.close();
 
-        return NextResponse.json({
-            message: 'successfully inserted',
-            data: data,
-        });
+        return new Response(JSON.stringify({ message: 'Product updated' }));
     } catch (e) {
-        console.log(e);
-    } finally {
-        if (client) {
-            await client.close();
-        }
+        return new Response('An error occurred');
     }
 }

@@ -1,7 +1,6 @@
 import { MongoClient } from 'mongodb';
-import { NextResponse } from 'next/server';
 
-export async function POST(req: any, res: any) {
+export async function POST(req: Request) {
     let client;
     try {
         client = await MongoClient.connect(process.env.MONGODB_URI!);
@@ -13,14 +12,15 @@ export async function POST(req: any, res: any) {
         await prodcutsCollection.insertOne(data);
         client.close;
 
-        return NextResponse.json({
-            message: 'successfully inserted',
-            data: data,
+        return new Response('Product created', { status: 201 });
+    } catch (e: any) {
+        return new Response('An error occurred', {
+            status: 500,
+            statusText: e.toString(),
         });
-    } catch (e) {
-        res.status(500).json({ message: 'Unable to connect to database' });
     }
 }
 
-
-
+export async function GET(req: Request) {
+    return new Response('Not implemented', { status: 501 });
+}
