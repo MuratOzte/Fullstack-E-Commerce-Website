@@ -7,13 +7,13 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // functions
-import allowedUrl from '@/util/allowedUrl';
 import { fetchProducts } from '@/GlobalRedux/slices/productsSlice';
+import allowedUrl from '@/util/allowedUrl';
 // components
 import Logo from '@/assets/logo.png';
 import Filter from '@/components/filter/filter';
-import Card from '@/components/product/card';
 import Products from '@/components/product/Products';
+import LoadingPage from '@/components/layout/loading';
 import { RootState } from '@/GlobalRedux/store';
 
 const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
@@ -22,9 +22,7 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
     if (!allowedUrl(params?.category ?? ''))
         return <div>{params?.category} Not Found</div>;
 
-    const isLoading = useSelector(
-        (state: RootState) => state.products.isloading
-    );
+    const data = useSelector((state: RootState) => state.products.data);
 
     const dispatch = useDispatch();
     const [scrollTop, setScrollTop] = useState(0);
@@ -70,8 +68,8 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
                         </motion.div>
                     )}
                 </AnimatePresence>
-                {isLoading ? (
-                    <div>Loading...</div>
+                {data ? (
+                    <LoadingPage />
                 ) : (
                     <>
                         <Grid sx={filterGridStyles} item xs={3}>
