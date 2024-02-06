@@ -10,11 +10,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '@/GlobalRedux/slices/productsSlice';
 import allowedUrl from '@/util/allowedUrl';
 // components
+import { RootState } from '@/GlobalRedux/store';
 import Logo from '@/assets/logo.png';
 import Filter from '@/components/filter/filter';
-import Products from '@/components/product/Products';
 import LoadingPage from '@/components/layout/loading';
-import { RootState } from '@/GlobalRedux/store';
+import Products from '@/components/product/Products';
 
 const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
     params,
@@ -23,9 +23,6 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
         return <div>{params?.category} Not Found</div>;
 
     const data = useSelector((state: RootState) => state.products.data);
-    const isLoading = useSelector(
-        (state: RootState) => state.products.isloading
-    );
 
     const dispatch = useDispatch();
     const [scrollTop, setScrollTop] = useState(0);
