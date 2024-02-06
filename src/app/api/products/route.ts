@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET() {
     try {
@@ -7,16 +7,19 @@ export async function GET() {
 
         const db = client.db('e-commerce');
         const productsCollection = db.collection('products');
-        const products = await productsCollection.find({}).toArray();
+        const data = await productsCollection.find({}).toArray();
 
         client.close();
-        return new Response(JSON.stringify(products));
+        return NextResponse.json(data);
     } catch (e) {
-        console.log(e);
+        return NextResponse.json({
+            message: 'successfully inserted',
+            data: e,
+        });
     }
 }
 
-export async function PUT(req: NextRequest,) {
+export async function PUT(req: NextRequest) {
     let client;
     try {
         client = await MongoClient.connect(process.env.MONGODB_URI!);

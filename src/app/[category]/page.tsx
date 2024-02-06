@@ -13,6 +13,7 @@ import { fetchProducts } from '@/GlobalRedux/slices/productsSlice';
 import Logo from '@/assets/logo.png';
 import Filter from '@/components/filter/filter';
 import Card from '@/components/product/card';
+import Products from '@/components/product/Products';
 
 const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
     params,
@@ -68,7 +69,7 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
                     <Filter />
                 </Grid>
                 <Grid sx={productGridStyles} item xs={9}>
-                    <Card />
+                    <Products />
                 </Grid>
             </Grid>
         </>
@@ -98,9 +99,8 @@ const filterGridStyles: React.CSSProperties = {
 };
 
 const productGridStyles: React.CSSProperties = {
-    height: '300vh',
-    overflowY: 'auto',
-    marginLeft: '25%',
+    height: '100%',
+    marginLeft: '30%',
     marginRight: '2%',
     marginTop: '5%',
 };

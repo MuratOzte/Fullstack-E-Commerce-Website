@@ -2,12 +2,20 @@ import React, { useState } from 'react';
 import { Grid, Rating } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/GlobalRedux/store';
-import { motion } from 'framer-motion';
+import { motion, spring } from 'framer-motion';
 import Image from 'next/image';
 
-const Card = () => {
-    const data = useSelector((state: RootState) => state.products.data);
+interface CardProps {
+    id: number;
+    name: string;
+    image: string;
+    star: number;
+    price: number;
+}
+
+const Card: React.FC<{ data: CardProps }> = ({ data }) => {
     const [isHovered, setIsHovered] = useState(false);
+    console.log(data);
 
     const handleMouseOver = () => {
         setIsHovered(true);
@@ -17,19 +25,8 @@ const Card = () => {
         setIsHovered(false);
     };
 
-    return data.length === 0 ? (
-        <div>loading...</div>
-    ) : (
-        <Grid
-            item
-            xs={3}
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                backgroundColor: '#ffffff',
-                justifyContent: 'center',
-            }}
-        >
+    return (
+        <Grid item xs={3} sx={entireGridStyle}>
             <motion.div
                 animate={{ scale: isHovered ? 1.1 : 1 }}
                 transition={{ duration: 0.3 }}
@@ -41,43 +38,46 @@ const Card = () => {
                     layout="responsive"
                     width={240}
                     height={240}
-                    alt={data[0].name}
-                    src={data[0].image}
+                    alt={data.name}
+                    src={data.image}
                 />
             </motion.div>
             <div
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut}
-                style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    margin: '0 20px',
-                }}
+                style={nameAndStarStyle}
             >
                 <div>
                     <motion.p
                         animate={{
-                            fontSize: isHovered ? '24px' : '32px',
-                            color: isHovered ? '#484848' : 'black',
+                            fontSize: isHovered ? '20px' : '24px',
+                            color: isHovered ? '#484848' : '#000000',
                         }}
-                        transition={{ duration: 0.3 }}
+                        transition={{
+                            duration: 0.3,
+                        }}
                         style={{
-                            fontSize: '32px',
+                            fontSize: '20px',
                             textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)',
                             textAlign: 'left',
                             color: '#484848',
                         }}
                     >
-                        {data[0].name}
+                        {data.name}
                     </motion.p>
                     <motion.div
                         animate={{
                             scale: isHovered ? 0.8 : 1,
-                            x: isHovered ? -14 : 0,
+                            x: isHovered ? -13 : 0,
+                        }}
+                        transition={{ bounce: '0' }}
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            textAlign: 'left',
                         }}
                     >
-                        <Rating readOnly value={data[0].star} />
+                        <Rating readOnly value={data.star} />
                     </motion.div>
                 </div>
                 <motion.p
@@ -93,7 +93,7 @@ const Card = () => {
                         fontFamily: 'Arial, sans-serif',
                     }}
                 >
-                    {data[0].price + '$'}
+                    {data.price + '$'}
                 </motion.p>
             </div>
             <div
@@ -126,6 +126,7 @@ const Card = () => {
                         border: 'none',
                         outline: 'none',
                         borderRadius: '8px',
+                        marginTop: '7%',
                     }}
                 >
                     Add Cart
@@ -134,5 +135,24 @@ const Card = () => {
         </Grid>
     );
 };
+
+const entireGridStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#ffffff',
+    justifyContent: 'center',
+    border: '2px solid #B4B4B8',
+    borderRadius: '8px',
+    margin: '15px 30px',
+    height: '400px',
+};
+
+const nameAndStarStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    margin: '0 20px',
+};
+
 
 export default Card;
