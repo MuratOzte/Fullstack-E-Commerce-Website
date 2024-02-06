@@ -23,6 +23,9 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
         return <div>{params?.category} Not Found</div>;
 
     const data = useSelector((state: RootState) => state.products.data);
+    const isLoading = useSelector(
+        (state: RootState) => state.products.isloading
+    );
 
     const dispatch = useDispatch();
     const [scrollTop, setScrollTop] = useState(0);
@@ -68,7 +71,7 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
                         </motion.div>
                     )}
                 </AnimatePresence>
-                {data ? (
+                {!data && isLoading ? (
                     <LoadingPage />
                 ) : (
                     <>

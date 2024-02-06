@@ -50,6 +50,7 @@ const Card: React.FC<{ data: CardProps }> = ({ data }) => {
             >
                 <div>
                     <motion.p
+                        initial={{ fontSize: '24px', color: '#000000' }}
                         animate={{
                             fontSize: isHovered ? '20px' : '24px',
                             color: isHovered ? '#484848' : '#000000',
@@ -67,6 +68,7 @@ const Card: React.FC<{ data: CardProps }> = ({ data }) => {
                         {data.name}
                     </motion.p>
                     <motion.div
+                        initial={{ scale: 1, x: 0 }}
                         animate={{
                             scale: isHovered ? 0.8 : 1,
                             x: isHovered ? -13 : 0,
@@ -82,6 +84,7 @@ const Card: React.FC<{ data: CardProps }> = ({ data }) => {
                     </motion.div>
                 </div>
                 <motion.p
+                    initial={{ fontSize: '32px' }}
                     animate={{ fontSize: isHovered ? '24px' : '32px' }}
                     transition={{ duration: 0.3 }}
                     style={{
@@ -108,12 +111,14 @@ const Card: React.FC<{ data: CardProps }> = ({ data }) => {
                 }}
             >
                 <motion.button
+                    initial={{ opacity: 0 }}
+                    whileHover={{ scale: 1.1 }}
                     animate={{
                         opacity: isHovered ? 1 : 0,
                     }}
                     transition={{ duration: 0.3 }}
                     style={{
-                        width: '90%',
+                        width: '80%',
                         height: '90%',
                         backgroundColor: 'black',
                         color: 'white',
@@ -154,6 +159,5 @@ const nameAndStarStyle = {
     alignItems: 'center',
     margin: '0 20px',
 };
-
 
 export default Card;
