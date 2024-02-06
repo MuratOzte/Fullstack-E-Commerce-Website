@@ -9,9 +9,7 @@ const Products = () => {
     const isLoading = useSelector(
         (state: RootState) => state.products.isloading
     );
-    return isLoading ? (
-        <div>loading... state</div>
-    ) : (
+    return (
         <Grid container spacing={2} sx={{ height: '100%' }}>
             {products.map((e) => (
                 <Card key={e.id} data={e} />

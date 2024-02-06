@@ -14,12 +14,17 @@ import Logo from '@/assets/logo.png';
 import Filter from '@/components/filter/filter';
 import Card from '@/components/product/card';
 import Products from '@/components/product/Products';
+import { RootState } from '@/GlobalRedux/store';
 
 const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
     params,
 }) => {
     if (!allowedUrl(params?.category ?? ''))
         return <div>{params?.category} Not Found</div>;
+
+    const isLoading = useSelector(
+        (state: RootState) => state.products.isloading
+    );
 
     const dispatch = useDispatch();
     const [scrollTop, setScrollTop] = useState(0);
@@ -65,12 +70,18 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
                         </motion.div>
                     )}
                 </AnimatePresence>
-                <Grid sx={filterGridStyles} item xs={3}>
-                    <Filter />
-                </Grid>
-                <Grid sx={productGridStyles} item xs={9}>
-                    <Products />
-                </Grid>
+                {isLoading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <>
+                        <Grid sx={filterGridStyles} item xs={3}>
+                            <Filter />
+                        </Grid>
+                        <Grid sx={productGridStyles} item xs={9}>
+                            <Products />
+                        </Grid>
+                    </>
+                )}
             </Grid>
         </>
     );

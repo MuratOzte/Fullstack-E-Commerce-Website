@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
 import { Grid, Rating } from '@mui/material';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/GlobalRedux/store';
-import { motion, spring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
+import React, { useState } from 'react';
+
+//components
+import Divider from '../filter/Divider';
 
 interface CardProps {
     id: number;
