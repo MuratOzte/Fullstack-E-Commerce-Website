@@ -71,7 +71,7 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
                         </motion.div>
                     )}
                 </AnimatePresence>
-                {!data && isLoading ? (
+                {data.length == 0 ? (
                     <LoadingPage />
                 ) : (
                     <>

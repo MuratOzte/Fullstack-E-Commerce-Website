@@ -19,7 +19,6 @@ const categories: { image: StaticImageData; alt: string; title: string }[] = [
 ];
 
 const CategoryCards = (props: any) => {
-    console.log(props);
     return (
         <Grid container sx={{ display: 'flex', justifyContent: 'center' }}>
             {categories.map((e) => (

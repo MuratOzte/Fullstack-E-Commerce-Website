@@ -38,7 +38,6 @@ const sendProductAction = async (formData: FormData) => {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log(data);
             } else {
                 console.error('Failed to create product:', response.statusText);
             }
