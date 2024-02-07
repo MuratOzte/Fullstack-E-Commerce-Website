@@ -1,27 +1,9 @@
-interface filterModel {
-    minPrice: number;
-    maxPrice: number;
-    minStar: number;
-    minBattery: number;
-    minStorage: number;
-    minRam: number;
-}
-
-interface productModel {
-    id: number;
-    name: string;
-    image: string;
-    star: number;
-    price: number;
-    battery: number;
-    storage: number;
-    ram: number;
-}
+import { FilterModel, ProductModel } from '../models/models';
 
 export const filterByUrl = (
     url: string,
-    filterData: filterModel,
-    productData: productModel
+    filterData: FilterModel,
+    productData: ProductModel
 ) => {
     console.log(url);
 };

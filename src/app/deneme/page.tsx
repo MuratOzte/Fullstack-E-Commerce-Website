@@ -1,13 +1,6 @@
 'use client';
 import useSWR from 'swr';
-
-interface Product {
-    id: number;
-    name: string;
-    price: number;
-    description: string;
-    dealer: string;
-}
+import { Product } from '@/models/models';
 
 function ProductSWR() {
     const { data, error } = useSWR('products', async () => {
