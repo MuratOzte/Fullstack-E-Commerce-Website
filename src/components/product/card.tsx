@@ -4,7 +4,6 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 
 //components
-import Divider from '../filter/Divider';
 
 interface CardProps {
     id: number;
@@ -12,11 +11,11 @@ interface CardProps {
     image: string;
     star: number;
     price: number;
+    dealer: string;
 }
 
 const Card: React.FC<{ data: CardProps }> = ({ data }) => {
     const [isHovered, setIsHovered] = useState(false);
-    console.log(data);
 
     const handleMouseOver = () => {
         setIsHovered(true);
@@ -145,7 +144,7 @@ const Card: React.FC<{ data: CardProps }> = ({ data }) => {
 const entireGridStyle = {
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#DCF2F1',
     justifyContent: 'center',
     border: '2px solid #B4B4B8',
     borderRadius: '8px',

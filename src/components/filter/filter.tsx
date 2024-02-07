@@ -2,8 +2,16 @@ import Species from './Species';
 import StarSection from './StarSection';
 import RangeSlider from './priceSlider';
 import Divider from './Divider';
+import { filterByUrl } from '../../util/filter';
+import { useEffect } from 'react';
 
 export default function Filter() {
+    const selectedUrl = window.location.href.split('/').pop();
+    
+    useEffect(() => {
+        // const filteredByUrl = filterByUrl(selectedUrl);
+    }, []);
+
     return (
         <div style={{ overflow: 'hidden' }}>
             <div
