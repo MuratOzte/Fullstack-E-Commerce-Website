@@ -1,19 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { FilterModel } from '@/models/models';
+import { PayloadAction, Draft } from '@reduxjs/toolkit';
 
 const initialState: FilterModel = {
     minPrice: 0,
     maxPrice: 1500,
     minStar: 0,
-    minBattery: 0,
-    minStorage: 0,
-    minRam: 0,
+    minBattery: 'All',
+    minStorage: 'All',
+    minRam: 'All',
 };
 
-export const filterSlice = createSlice({
+const filterSlice = createSlice({
     name: 'filter',
     initialState,
     reducers: {
-        // Add your reducers here
+        setFilters: (
+            state: Draft<FilterModel>,
+            action: PayloadAction<{ key: keyof FilterModel; value: number }>
+        ) => {
+            state[action.payload.key] = action.payload.value;
+        },
     },
 });
+
+export default filterSlice.reducer;

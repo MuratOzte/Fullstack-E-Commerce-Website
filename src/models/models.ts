@@ -10,18 +10,18 @@ export interface FilterModel {
     minPrice: number;
     maxPrice: number;
     minStar: number;
-    minBattery: number;
-    minStorage: number;
-    minRam: number;
+    minBattery: number | string;
+    minStorage: number | string;
+    minRam: number | string;
 }
 
 export interface FilterDataModel {
-    price:number;
-    star:number;
-    battery:number;
-    storage:number;
-    ram:number;
-    name:string;
+    price: number;
+    star: number;
+    battery: number;
+    storage: number;
+    ram: number;
+    name: string;
 }
 
 export interface ProductModel {

@@ -22,6 +22,9 @@ export default function StarRate() {
                     <input
                         type="checkbox"
                         style={checkBoxStyle}
+                        onChange={() => {
+                            console.log(index);
+                        }}
                         checked={selected === index}
                     />
                     <StarRateIcon sx={starStyle} />
