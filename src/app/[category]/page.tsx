@@ -44,37 +44,10 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
     return (
         <>
             <Grid container>
-                <AnimatePresence>
-                    {scrollTop > 60 && (
-                        <motion.div
-                            style={LogoContainerStyle}
-                            onClick={() =>
-                                window.scrollTo({
-                                    top: 0,
-                                    behavior: 'smooth',
-                                })
-                            }
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.3, delay: 0.3 }}
-                        >
-                            <Image
-                                src={Logo}
-                                height={32}
-                                width={32}
-                                alt="logo"
-                            />
-                            <p>E-Commerce</p>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
                 {data.length == 0 ? (
                     <LoadingPage />
                 ) : (
-                    <div
-                        id="selam"
-                    >
+                    <div id="selam">
                         <FilterDrawer />
                         <Products />
                     </div>

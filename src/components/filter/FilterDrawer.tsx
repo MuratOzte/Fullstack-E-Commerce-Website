@@ -21,7 +21,7 @@ const FilterDrawer = () => {
                 animate={{ x: open ? 260 : 0 }}
                 transition={{ bounce: 0, duration: open ? 0.18 : 0.2 }}
                 style={{
-                    position: 'absolute',
+                    position: 'fixed',
                     display: 'flex',
                     justifyContent: 'center',
                     fontSize: '2rem',
@@ -34,6 +34,8 @@ const FilterDrawer = () => {
                     height: 150,
                     textAlign: 'center',
                     alignItems: 'center',
+                    zIndex: 1000,
+                    cursor: 'pointer',
                 }}
                 onClick={handleOpen}
                 dangerouslySetInnerHTML={{

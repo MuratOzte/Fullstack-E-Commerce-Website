@@ -33,19 +33,24 @@ const Card: React.FC<{ data: CardProps }> = ({ data }) => {
                 justifyContent="center"
                 sx={{
                     backgroundColor: '#DCF2F1',
-                    border: '2px solid #B4B4B8',
-                    width: '20%',
                     margin: {
                         xs: '15px',
                         md: '15px',
                     },
+                    padding: '0!important',
                 }}
             >
-                <Grid item xs={12} display="flex" justifyContent="center">
+                <Grid
+                    item
+                    xs={12}
+                    display="flex"
+                    justifyContent="center"
+                    sx={{ backgroundColor: '#f1f5f9' }}
+                    padding={0}
+                >
                     <motion.div
                         animate={{ scale: isHovered ? 1.1 : 1 }}
                         transition={{ duration: 0.3 }}
-                        style={{ width: '70%' }}
                         onMouseOver={handleMouseOver}
                         onMouseOut={handleMouseOut}
                     >
@@ -89,8 +94,42 @@ const Card: React.FC<{ data: CardProps }> = ({ data }) => {
                         {data.name}
                     </motion.p>
                 </Grid>
+                <Grid item xs={6}>
+                    <motion.div
+                        initial={{ scale: 1, x: 0 }}
+                        animate={{
+                            scale: isHovered ? 0.8 : 1,
+                            x: isHovered ? -13 : 0,
+                        }}
+                        transition={{ bounce: '0' }}
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            textAlign: 'left',
+                        }}
+                    >
+                        <Rating readOnly value={data.star} />
+                    </motion.div>
+                </Grid>
+                <Grid item xs={6}>
+                    <motion.p
+                        initial={{ fontSize: '32px' }}
+                        animate={{ fontSize: isHovered ? '24px' : '32px' }}
+                        transition={{ duration: 0.3 }}
+                        style={{
+                            fontSize: '24px',
+                            textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)',
+                            lineHeight: '20px',
+                            textAlign: 'right',
+                            color: '#484848',
+                            fontFamily: 'Arial, sans-serif',
+                            marginRight: '5%',
+                        }}
+                    >
+                        {data.price + '$'}
+                    </motion.p>
+                </Grid>
             </Grid>
-            <br />
         </>
     );
 };
