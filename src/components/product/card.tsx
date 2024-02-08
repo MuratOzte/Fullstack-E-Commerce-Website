@@ -29,14 +29,17 @@ const Card: React.FC<{ data: CardProps }> = ({ data }) => {
                 item
                 md={3}
                 xs={4}
+                onMouseOver={handleMouseOver}
+                onMouseOut={handleMouseOut}
                 container
                 justifyContent="center"
                 sx={{
                     backgroundColor: '#DCF2F1',
                     margin: {
                         xs: '15px',
-                        md: '15px',
+                        md: '40px',
                     },
+                    maxWidth: '150px',
                     padding: '0!important',
                 }}
             >
@@ -51,11 +54,10 @@ const Card: React.FC<{ data: CardProps }> = ({ data }) => {
                     <motion.div
                         animate={{ scale: isHovered ? 1.1 : 1 }}
                         transition={{ duration: 0.3 }}
-                        onMouseOver={handleMouseOver}
-                        onMouseOut={handleMouseOut}
                     >
                         <Image
                             layout="responsive"
+                            style={{ borderRadius: '50%', objectFit: 'cover' }}
                             height={120}
                             width={120}
                             alt={data.name}
@@ -129,6 +131,44 @@ const Card: React.FC<{ data: CardProps }> = ({ data }) => {
                         {data.price + '$'}
                     </motion.p>
                 </Grid>
+                <div
+                    onMouseOver={handleMouseOver}
+                    onMouseOut={handleMouseOut}
+                    style={{
+                        height: '50px',
+                        transition: 'all 0.3s ease',
+                        display: 'flex',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <motion.button
+                        initial={{ opacity: 0 }}
+                        whileHover={{ scale: 1.1 }}
+                        animate={{
+                            opacity: isHovered ? 1 : 0,
+                        }}
+                        transition={{ duration: 0.3 }}
+                        style={{
+                            width: '200px',
+                            height: '60%',
+                            backgroundColor: 'black',
+                            color: 'white',
+                            fontSize: '16px',
+                            fontWeight: 500,
+                            fontFamily: 'Arial, sans-serif',
+                            letterSpacing: 'normal',
+                            textAlign: 'center',
+                            textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)',
+                            cursor: 'pointer',
+                            border: 'none',
+                            outline: 'none',
+                            borderRadius: '8px',
+                            marginTop: '7%',
+                        }}
+                    >
+                        Add Cart
+                    </motion.button>
+                </div>
             </Grid>
         </>
     );

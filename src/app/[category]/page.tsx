@@ -43,16 +43,14 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
 
     return (
         <>
-            <Grid container>
-                {data.length == 0 ? (
-                    <LoadingPage />
-                ) : (
-                    <div id="selam">
-                        <FilterDrawer />
-                        <Products />
-                    </div>
-                )}
-            </Grid>
+            {data.length == 0 ? (
+                <LoadingPage />
+            ) : (
+                <div style={productGridStyles}>
+                    <FilterDrawer />
+                    <Products />
+                </div>
+            )}
         </>
     );
 };
@@ -80,14 +78,11 @@ const filterGridStyles: React.CSSProperties = {
 };
 
 const productGridStyles: React.CSSProperties = {
-    width: '100%',
+    width: '85%',
     height: '100%',
-    marginTop: '5%',
-    marginLeft: '25%',
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    gap: '2%',
     transition: 'all 0.3s ease',
 };
 
