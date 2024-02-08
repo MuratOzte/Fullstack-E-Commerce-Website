@@ -1,6 +1,6 @@
 //components
 import { Grid } from '@mui/material';
-import Card from './card';
+import Card from './Card';
 //hooks
 import { RootState } from '@/GlobalRedux/store';
 import { useSelector } from 'react-redux';
@@ -11,7 +11,10 @@ const Products = () => {
         <Grid
             container
             spacing={2}
-            sx={{ justifyContent: 'center', marginTop: '5%' }}
+            sx={{
+                justifyContent: 'center',
+                marginTop: '60px',
+            }}
         >
             {products.map((e) => (
                 <Card key={e.id} data={e} />
