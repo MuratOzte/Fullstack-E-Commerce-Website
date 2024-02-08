@@ -1,13 +1,20 @@
 'use client';
-import { useState } from 'react';
-const Burger = () => {
+import { useEffect, useState } from 'react';
+
+const Burger: React.FC<{ onClick: (boolean: boolean) => void }> = ({
+    onClick,
+}) => {
     const [isClicked, setIsClicked] = useState<boolean>(false);
+
+
 
     const clickHandler = () => {
         setTimeout(() => {
             setIsClicked((prev) => !prev);
         }, 200);
     };
+
+    onClick(isClicked);
 
     return (
         <div onClick={clickHandler} style={burger}>
@@ -34,6 +41,8 @@ const Burger = () => {
 
 const burger: React.CSSProperties = {
     position: 'absolute',
+    left: '50%',
+    top: '3%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -75,10 +84,6 @@ const line3: React.CSSProperties = {
     margin: '5px 0px',
     borderRadius: '5px',
     transition: 'all 0.5s ease',
-};
-
-const checkbox: React.CSSProperties = {
-    opacity: 0,
 };
 
 export default Burger;

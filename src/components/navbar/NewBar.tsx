@@ -1,19 +1,32 @@
-import Link from 'next/link';
-import Image from 'next/image';
+'use client';
 import logo from '@/assets/logo.png';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
 import BurgerTsx from './Burger';
-import Search from './Search';
-
+import BurgerContainer from './BurgerContainer';
+import { AnimatePresence } from 'framer-motion';
 
 const BurgerBar = () => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const onclick = (boolean: boolean) => {
+        setIsOpen(boolean);
+    };
+
+    useEffect(() => {
+        setIsOpen(false);
+    }, [location]);
+
     return (
         <>
             <nav style={navStyle}>
                 <Link href="/" style={logoLinkStyle}>
                     <Image src={logo} alt="logo" width={32} height={32} />
                 </Link>
-                <Search />
-                <BurgerTsx />
+                <AnimatePresence>
+                    {isOpen && <BurgerContainer />}
+                </AnimatePresence>
+                <BurgerTsx onClick={onclick} />
             </nav>
         </>
     );

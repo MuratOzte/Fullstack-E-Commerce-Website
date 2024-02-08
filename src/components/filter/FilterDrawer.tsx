@@ -6,7 +6,6 @@ import Filter from './filter';
 
 const FilterDrawer = () => {
     const windowWidth = window.innerWidth;
-    console.log(windowWidth);
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => {
@@ -29,7 +28,7 @@ const FilterDrawer = () => {
                     fontSize: '2rem',
                     borderTopRightRadius: '50%',
                     borderBottomRightRadius: '50%',
-                    backgroundColor: '#7fc7d9',
+                    backgroundColor: 'black',
                     left: '0',
                     top: '40%',
                     width: windowWidth < 500 ? '5%' : '2%',
