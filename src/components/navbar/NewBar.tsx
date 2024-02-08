@@ -13,10 +13,6 @@ const BurgerBar = () => {
         setIsOpen(boolean);
     };
 
-    const toggler = () => {
-        setIsOpen((prev) => !prev);
-    };
-
     return (
         <>
             <nav style={navStyle}>
@@ -24,7 +20,7 @@ const BurgerBar = () => {
                     <Image src={logo} alt="logo" width={32} height={32} />
                 </Link>
                 <AnimatePresence>
-                    {isOpen && <BurgerContainer setIsOpen={toggler} />}
+                    {isOpen && <BurgerContainer />}
                 </AnimatePresence>
                 <BurgerTsx onClick={onclick} />
             </nav>

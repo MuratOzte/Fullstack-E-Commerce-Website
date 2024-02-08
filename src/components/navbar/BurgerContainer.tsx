@@ -14,11 +14,7 @@ const links: { href: string; label: string }[] = [
 
 import React from 'react';
 
-type BurgerContainerProps = {
-    setIsOpen: (prev: boolean) => void;
-};
-
-const BurgerContainer: React.FC<BurgerContainerProps> = ({ setIsOpen }) => {
+const BurgerContainer = () => {
     return (
         <motion.div
             initial={{ y: -200, opacity: 0 }}
@@ -41,10 +37,7 @@ const BurgerContainer: React.FC<BurgerContainerProps> = ({ setIsOpen }) => {
             }}
         >
             {links.map((link: { href: string; label: string }) => (
-                <Link
-                    key={link.href}
-                    href={link.href}
-                >
+                <Link key={link.href} href={link.href}>
                     {link.label}
                 </Link>
             ))}
