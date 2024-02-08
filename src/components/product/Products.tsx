@@ -1,6 +1,6 @@
 //components
 import { Grid } from '@mui/material';
-import Card from './Card';
+import EachItem from './EachItem';
 //hooks
 import { RootState } from '@/GlobalRedux/store';
 import { useSelector } from 'react-redux';
@@ -17,7 +17,7 @@ const Products = () => {
             }}
         >
             {products.map((e) => (
-                <Card key={e.id} data={e} />
+                <EachItem key={e.id} data={e} />
             ))}
         </Grid>
     );
