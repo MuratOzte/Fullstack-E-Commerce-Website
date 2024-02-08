@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logo from '@/assets/logo.png';
 import BurgerTsx from './Burger';
+import Search from './Search';
 
 const BurgerBar = () => {
     return (
@@ -10,6 +11,7 @@ const BurgerBar = () => {
                 <Link href="/" style={logoLinkStyle}>
                     <Image src={logo} alt="logo" width={32} height={32} />
                 </Link>
+                <Search />
                 <BurgerTsx />
             </nav>
         </>
