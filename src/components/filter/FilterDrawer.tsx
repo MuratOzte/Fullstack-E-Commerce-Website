@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import Filter from './filter';
 
 const FilterDrawer = () => {
+    const windowWidth = window.innerWidth;
+    console.log(windowWidth);
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => {
@@ -27,10 +29,10 @@ const FilterDrawer = () => {
                     fontSize: '2rem',
                     borderTopRightRadius: '50%',
                     borderBottomRightRadius: '50%',
-                    backgroundColor: 'red',
+                    backgroundColor: '#7fc7d9',
                     left: '0',
                     top: '40%',
-                    width: '2%',
+                    width: windowWidth < 500 ? '5%' : '2%',
                     height: 150,
                     textAlign: 'center',
                     alignItems: 'center',

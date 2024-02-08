@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import { useState, useEffect } from 'react';
+import './burgerBar.css';
+
 const Navbar = () => {
     const pathname: string = usePathname();
 
@@ -46,6 +48,7 @@ const Navbar = () => {
                 position: 'fixed',
                 width: '100%',
                 top: 0,
+                height: 60,
             }}
             animate={{ y: scrollTop > 60 ? -100 : 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -55,26 +58,11 @@ const Navbar = () => {
                     <Image src={logo} alt="logo" width={32} height={32} />
                     <p style={{ marginLeft: '1%' }}>E-commerce</p>
                 </Link>
-
-                {links.map((e) => {
-                    return (
-                        <motion.li
-                            key={e.text}
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                        >
-                            <Link href={e.url}>
-                                {e.text}
-                                {isCurrentLink(e.url) && (
-                                    <motion.div
-                                        layoutId="current-link"
-                                        style={currentLinkStyle}
-                                    />
-                                )}
-                            </Link>
-                        </motion.li>
-                    );
-                })}
+                <div className="hamburger-lines">
+                    <span className="line line1"></span>
+                    <span className="line line2"></span>
+                    <span className="line line3"></span>
+                </div>
             </ul>
         </motion.nav>
     );

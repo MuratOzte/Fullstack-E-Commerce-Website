@@ -46,7 +46,8 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                     },
                     padding: '0!important',
                     height: {
-                        xs: '270px',
+                        xs: '300px',
+                        md: '320px',
                     },
                 }}
             >
@@ -100,13 +101,16 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                             duration: 0.3,
                         }}
                         style={{
-                            fontSize: '20px',
                             textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)',
                             textAlign: 'left',
                             color: '#484848',
                         }}
                     >
-                        {data.name}
+                        {!isHovered ? data.name.length > 16
+                            ? `${data.name.slice(0, 16)}...`
+                            : data.name :data.name.length > 24
+                            ? `${data.name.slice(0, 16)}...`
+                            : data.name }
                     </motion.p>
                 </Grid>
                 <Grid
@@ -120,7 +124,7 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                         },
                         mt: {
                             xs: '5%',
-                            md: '10%',
+                            md: '5%',
                         },
                         alignItems: 'center',
                         display: 'flex',
@@ -129,7 +133,7 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                     <motion.div
                         initial={{ scale: 1, x: 0 }}
                         animate={{
-                            scale: isHovered ? 0.9 : 1,
+                            scale: isHovered ? 0.95 : 1,
                             x: isHovered ? -4 : 0,
                         }}
                         transition={{ bounce: '0' }}
@@ -157,7 +161,7 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                         },
                         mt: '5%',
                         alignItems: 'center',
-                        textAlign: 'right',
+                        textAlign: 'center',
                     }}
                 >
                     <motion.p
@@ -171,7 +175,7 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                             fontSize: '24px',
                             textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)',
                             lineHeight: '20px',
-                            textAlign: 'right',
+                            textAlign: 'center',
                             justifyContent: 'flex-end',
                             color: '#484848',
                             fontFamily: 'Arial, sans-serif',
@@ -199,6 +203,10 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                         },
                         mx: {
                             xs: '5%',
+                        },
+                        mt: {
+                            xs: '5%',
+                            md: '4%',
                         },
                     }}
                 >
