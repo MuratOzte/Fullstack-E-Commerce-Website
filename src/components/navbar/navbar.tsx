@@ -58,11 +58,6 @@ const Navbar = () => {
                     <Image src={logo} alt="logo" width={32} height={32} />
                     <p style={{ marginLeft: '1%' }}>E-commerce</p>
                 </Link>
-                <div className="hamburger-lines">
-                    <span className="line line1"></span>
-                    <span className="line line2"></span>
-                    <span className="line line3"></span>
-                </div>
             </ul>
         </motion.nav>
     );

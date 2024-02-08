@@ -38,7 +38,14 @@ const BurgerContainer = () => {
         >
             {links.map((link: { href: string; label: string }) => (
                 <Link key={link.href} href={link.href}>
-                    {link.label}
+                    <motion.p
+                        whileHover={{
+                            scale: 1.1,
+                        }}
+                        transition={{ bounce: 0, duration: 0.3 }}
+                    >
+                        {link.label}
+                    </motion.p>
                 </Link>
             ))}
         </motion.div>
