@@ -1,11 +1,11 @@
 'use client';
 import logo from '@/assets/logo.png';
+import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import BurgerTsx from './Burger';
 import BurgerContainer from './BurgerContainer';
-import { AnimatePresence } from 'framer-motion';
 
 const BurgerBar = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -13,9 +13,9 @@ const BurgerBar = () => {
         setIsOpen(boolean);
     };
 
-    useEffect(() => {
-        setIsOpen(false);
-    }, [location]);
+    const toggler = () => {
+        setIsOpen((prev) => !prev);
+    };
 
     return (
         <>
@@ -24,7 +24,7 @@ const BurgerBar = () => {
                     <Image src={logo} alt="logo" width={32} height={32} />
                 </Link>
                 <AnimatePresence>
-                    {isOpen && <BurgerContainer />}
+                    {isOpen && <BurgerContainer setIsOpen={toggler} />}
                 </AnimatePresence>
                 <BurgerTsx onClick={onclick} />
             </nav>

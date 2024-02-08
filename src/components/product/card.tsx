@@ -60,6 +60,7 @@ const Card: React.FC<{ data: CardProps }> = ({ data }) => {
                             style={{ borderRadius: '50%', objectFit: 'cover' }}
                             height={120}
                             width={120}
+                            priority={true}
                             alt={data.name}
                             src={data.image}
                         />

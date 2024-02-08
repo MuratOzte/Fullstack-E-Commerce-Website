@@ -1,12 +1,10 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const Burger: React.FC<{ onClick: (boolean: boolean) => void }> = ({
     onClick,
 }) => {
     const [isClicked, setIsClicked] = useState<boolean>(false);
-
-
 
     const clickHandler = () => {
         setTimeout(() => {

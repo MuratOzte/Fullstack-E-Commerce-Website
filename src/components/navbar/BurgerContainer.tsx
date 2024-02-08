@@ -12,12 +12,18 @@ const links: { href: string; label: string }[] = [
     { href: '/poco', label: 'Poco' },
 ];
 
-const BurgerContainer: React.FC = () => {
+import React from 'react';
+
+type BurgerContainerProps = {
+    setIsOpen: (prev: boolean) => void;
+};
+
+const BurgerContainer: React.FC<BurgerContainerProps> = ({ setIsOpen }) => {
     return (
         <motion.div
-            initial={{ y: -200 }}
-            animate={{ y: 0 }}
-            exit={{ y: -800 }}
+            initial={{ y: -200, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -800, opacity: 0 }}
             transition={{ duration: 0.3, bounce: 0 }}
             style={{
                 width: '100%',
@@ -35,7 +41,10 @@ const BurgerContainer: React.FC = () => {
             }}
         >
             {links.map((link: { href: string; label: string }) => (
-                <Link key={link.href} href={link.href}>
+                <Link
+                    key={link.href}
+                    href={link.href}
+                >
                     {link.label}
                 </Link>
             ))}

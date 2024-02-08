@@ -6,7 +6,7 @@ import { filterByUrl } from '../../util/filter';
 import { useEffect } from 'react';
 
 export default function Filter() {
-    const selectedUrl = window.location.href.split('/').pop();
+    // const selectedUrl = window.location.href.split('/').pop();
 
     useEffect(() => {
         // const filteredByUrl = filterByUrl(selectedUrl);
