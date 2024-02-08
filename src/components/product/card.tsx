@@ -3,8 +3,6 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-//components
-
 interface CardProps {
     id: number;
     name: string;
@@ -35,7 +33,7 @@ const Card: React.FC<{ data: CardProps }> = ({ data }) => {
                 onMouseOut={handleMouseOut}
             >
                 <Image
-                    layout='responsive'
+                    layout="responsive"
                     width={240}
                     height={240}
                     alt={data.name}

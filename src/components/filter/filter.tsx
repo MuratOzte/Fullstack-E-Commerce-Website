@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 export default function Filter() {
     const selectedUrl = window.location.href.split('/').pop();
-    
+
     useEffect(() => {
         // const filteredByUrl = filterByUrl(selectedUrl);
     }, []);
@@ -47,3 +47,4 @@ export default function Filter() {
         </div>
     );
 }
+

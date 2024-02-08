@@ -15,6 +15,7 @@ import Logo from '@/assets/logo.png';
 import Filter from '@/components/filter/filter';
 import LoadingPage from '@/components/layout/loading';
 import Products from '@/components/product/Products';
+import FilterDrawer from '@/components/filter/FilterDrawer';
 
 const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
     params,
@@ -71,14 +72,12 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
                 {data.length == 0 ? (
                     <LoadingPage />
                 ) : (
-                    <>
-                        <Grid sx={filterGridStyles} item xs={3}>
-                            <Filter />
-                        </Grid>
-                        <Grid sx={productGridStyles} item xs={9}>
-                            <Products />
-                        </Grid>
-                    </>
+                    <div
+                        id="selam"
+                    >
+                        <FilterDrawer />
+                        <Products />
+                    </div>
                 )}
             </Grid>
         </>
@@ -108,10 +107,15 @@ const filterGridStyles: React.CSSProperties = {
 };
 
 const productGridStyles: React.CSSProperties = {
+    width: '100%',
     height: '100%',
-    marginLeft: '30%',
-    marginRight: '2%',
     marginTop: '5%',
+    marginLeft: '25%',
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    gap: '2%',
+    transition: 'all 0.3s ease',
 };
 
 export default CategoryPage;
