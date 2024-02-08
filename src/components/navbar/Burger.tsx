@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-const BurgerTsx = () => {
+const Burger = () => {
     const [isClicked, setIsClicked] = useState<boolean>(false);
 
     const clickHandler = () => {
@@ -38,8 +38,6 @@ const burger: React.CSSProperties = {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    top: '5%',
-    right: '50%',
     width: '30px',
     height: '30px',
     cursor: 'pointer',
@@ -47,7 +45,6 @@ const burger: React.CSSProperties = {
 };
 
 const line1: React.CSSProperties = {
-    display: 'block',
     width: '25px',
     height: '4px',
     top: '5px',
@@ -58,7 +55,6 @@ const line1: React.CSSProperties = {
 };
 
 const line2: React.CSSProperties = {
-    display: 'block',
     position: 'absolute',
     top: '15px',
     width: '25px',
@@ -85,4 +81,4 @@ const checkbox: React.CSSProperties = {
     opacity: 0,
 };
 
-export default BurgerTsx;
+export default Burger;

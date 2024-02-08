@@ -4,6 +4,7 @@ import logo from '@/assets/logo.png';
 import BurgerTsx from './Burger';
 import Search from './Search';
 
+
 const BurgerBar = () => {
     return (
         <>
