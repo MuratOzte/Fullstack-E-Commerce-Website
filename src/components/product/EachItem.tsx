@@ -1,4 +1,4 @@
-import { Grid, Rating, Typography } from '@mui/material';
+import { Grid, Rating } from '@mui/material';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React, { useState } from 'react';
@@ -9,7 +9,7 @@ interface CardProps {
     image: string;
     star: number;
     price: number;
-    dealer: string;
+    comments: number[];
 }
 
 const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
@@ -27,20 +27,27 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
         <>
             <Grid
                 item
-                md={3}
-                xs={4}
+                md={2}
+                xs={6}
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut}
                 container
                 justifyContent="center"
                 sx={{
                     backgroundColor: '#DCF2F1',
-                    margin: {
-                        xs: '15px',
+                    marginX: {
+                        xs: '10px',
                         md: '40px',
                     },
-                    maxWidth: '150px',
+                    marginY: '20px',
+                    maxWidth: {
+                        xs: '42%',
+                        md: '200px',
+                    },
                     padding: '0!important',
+                    height: {
+                        xs: '270px',
+                    },
                 }}
             >
                 <Grid
@@ -70,11 +77,17 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                     xs={12}
                     sx={{
                         display: 'flex',
-                        justifyContent: 'center',
+                        justifyContent: {
+                            xs: 'flex-start',
+                            md: 'center',
+                        },
+                        ml: {
+                            xs: '15%',
+                            md: '0',
+                        },
                         textAlign: 'left',
-                        backgroundColor: {
-                            xs: 'red',
-                            md: 'yellow',
+                        maxWidth: {
+                            xs: '100%',
                         },
                     }}
                 >
@@ -96,33 +109,70 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                         {data.name}
                     </motion.p>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid
+                    item
+                    xs={12}
+                    md={5}
+                    sx={{
+                        ml: {
+                            xs: '13%',
+                            md: '3%',
+                        },
+                        mt: {
+                            xs: '5%',
+                            md: '10%',
+                        },
+                        alignItems: 'center',
+                        display: 'flex',
+                    }}
+                >
                     <motion.div
                         initial={{ scale: 1, x: 0 }}
                         animate={{
-                            scale: isHovered ? 0.8 : 1,
-                            x: isHovered ? -13 : 0,
+                            scale: isHovered ? 0.9 : 1,
+                            x: isHovered ? -4 : 0,
                         }}
                         transition={{ bounce: '0' }}
                         style={{
                             display: 'flex',
-                            justifyContent: 'center',
-                            textAlign: 'left',
+                            justifyContent: 'flex-start',
                         }}
                     >
-                        <Rating readOnly value={data.star} />
+                        <Rating readOnly size={'small'} value={data.star} />
                     </motion.div>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid
+                    item
+                    xs={12}
+                    md={6}
+                    sx={{
+                        display: 'flex',
+                        justifyContent: {
+                            xs: 'flex-start',
+                            md: 'flex-end',
+                        },
+                        ml: {
+                            xs: '15%',
+                            md: '0',
+                        },
+                        mt: '5%',
+                        alignItems: 'center',
+                        textAlign: 'right',
+                    }}
+                >
                     <motion.p
-                        initial={{ fontSize: '32px' }}
-                        animate={{ fontSize: isHovered ? '24px' : '32px' }}
+                        initial={{ fontSize: '24px' }}
+                        animate={{
+                            fontSize: isHovered ? '20px' : '24px',
+                        }}
                         transition={{ duration: 0.3 }}
                         style={{
+                            display: 'flex',
                             fontSize: '24px',
                             textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)',
                             lineHeight: '20px',
                             textAlign: 'right',
+                            justifyContent: 'flex-end',
                             color: '#484848',
                             fontFamily: 'Arial, sans-serif',
                             marginRight: '5%',
@@ -131,14 +181,25 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                         {data.price + '$'}
                     </motion.p>
                 </Grid>
-                <div
+                <Grid
+                    item
+                    xs={12}
                     onMouseOver={handleMouseOver}
                     onMouseOut={handleMouseOut}
-                    style={{
-                        height: '50px',
-                        transition: 'all 0.3s ease',
+                    sx={{
                         display: 'flex',
                         justifyContent: 'center',
+                        alignItems: 'center',
+                        width: '80%',
+                        height: {
+                            xs: '15%',
+                        },
+                        mb: {
+                            xs: '10%',
+                        },
+                        mx: {
+                            xs: '5%',
+                        },
                     }}
                 >
                     <motion.button
@@ -146,6 +207,7 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                         whileHover={{ scale: 1.1 }}
                         animate={{
                             opacity: isHovered ? 1 : 0,
+                            y: isHovered ? -10 : -5,
                         }}
                         transition={{ duration: 0.3 }}
                         style={{
@@ -168,7 +230,7 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                     >
                         Add Cart
                     </motion.button>
-                </div>
+                </Grid>
             </Grid>
         </>
     );
