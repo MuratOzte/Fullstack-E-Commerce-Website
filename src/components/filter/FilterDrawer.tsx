@@ -35,7 +35,7 @@ const FilterDrawer = () => {
                     height: 150,
                     textAlign: 'center',
                     alignItems: 'center',
-                    zIndex: 1000,
+                    zIndex: 100,
                     cursor: 'pointer',
                 }}
                 onClick={handleOpen}

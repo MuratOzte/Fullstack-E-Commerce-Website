@@ -1,6 +1,8 @@
 'use client';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import uiSlice from '@/GlobalRedux/slices/uiSlice';
 
 const links: { href: string; label: string }[] = [
     { href: '/', label: 'Home' },
@@ -14,7 +16,11 @@ const links: { href: string; label: string }[] = [
 
 import React from 'react';
 
-const BurgerContainer = () => {
+const BurgerContainer: React.FC<{ onclick: (boolean: boolean) => void }> = ({
+    onclick,
+}) => {
+    const dispatch = useDispatch();
+
     return (
         <motion.div
             initial={{ y: -200, opacity: 0 }}
@@ -24,7 +30,7 @@ const BurgerContainer = () => {
             style={{
                 width: '100%',
                 height: '500px',
-                zIndex: 100,
+                zIndex: 500,
                 backgroundColor: 'black',
                 position: 'absolute',
                 top: '50px',
@@ -42,6 +48,7 @@ const BurgerContainer = () => {
                         whileHover={{
                             scale: 1.1,
                         }}
+                        onClick={toggleBurger(false)}
                         transition={{ bounce: 0, duration: 0.3 }}
                     >
                         {link.label}

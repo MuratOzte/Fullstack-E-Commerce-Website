@@ -38,7 +38,7 @@ const BurgerBar = () => {
                     <Image src={logo} alt="logo" width={32} height={32} />
                 </Link>
                 <AnimatePresence>
-                    {isOpen && <BurgerContainer />}
+                    {isOpen && <BurgerContainer onclick={onclick} />}
                 </AnimatePresence>
                 <BurgerTsx onClick={onclick} />
             </motion.nav>
