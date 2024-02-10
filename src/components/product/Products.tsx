@@ -1,11 +1,18 @@
+'use client';
 //components
 import { Grid } from '@mui/material';
 import EachItem from './EachItem';
 //hooks
 import { RootState } from '@/GlobalRedux/store';
 import { useSelector } from 'react-redux';
+//functions
+import { filterProducts } from '@/util/filter';
 const Products = () => {
+    const filter = useSelector((state: RootState) => state.filter);
     const products = useSelector((state: RootState) => state.products.data);
+
+    const filteredProducts = filterProducts(products, filter);
+    console.log(filteredProducts);
 
     return (
         <Grid
@@ -16,7 +23,8 @@ const Products = () => {
                 marginTop: '60px',
             }}
         >
-            {products.map((e) => (
+            {filteredProducts.length === 0 && <p>Selam</p>}
+            {filteredProducts.map((e: any) => (
                 <EachItem key={e.id} data={e} />
             ))}
         </Grid>

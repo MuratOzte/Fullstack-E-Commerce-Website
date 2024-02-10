@@ -14,16 +14,6 @@ export default function Filter() {
     const dispatch = useDispatch();
 
     const selectedUrl = window.location.href.split('/').pop();
-    const filterData = useSelector((state: RootState) => state.filter);
-    const unfilteredData = useSelector(
-        (state: RootState) => state.products.data
-    );
-
-    useEffect(() => {
-        setTimeout(() => {
-            dispatch(filterSlice.actions.filterProducts(unfilteredData));
-        }, 100);
-    }, [filterData]);
 
     return (
         <div style={{ overflow: 'hidden' }}>
