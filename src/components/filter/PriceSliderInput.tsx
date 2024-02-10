@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 interface Props {
     title: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -13,6 +15,15 @@ const PriceSliderInput: React.FC<Props> = ({
     bigValue,
     smallValue,
 }) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const inputValue = parseFloat(e.target.value);
+
+        // 0 ile 1500 arasında kontrol
+        if (inputValue >= 0 && inputValue <= 1500) {
+            onChange(e);
+        }
+    };
+
     return (
         <div style={divStyle}>
             <p style={pStyle}>{title}</p>
@@ -21,10 +32,11 @@ const PriceSliderInput: React.FC<Props> = ({
                 min="0"
                 max="1500"
                 step="50"
-                onChange={onChange}
+                onChange={handleInputChange}
                 value={smallValue === value ? smallValue : bigValue}
                 style={inputStyle}
             />
+            <p style={dolarStyle}>$</p>
         </div>
     );
 };
@@ -39,7 +51,7 @@ const divStyle: React.CSSProperties = {
 };
 
 const pStyle: React.CSSProperties = {
-    width: '70px',
+    width: '50%',
     color: 'black',
     fontSize: '16px',
     fontFamily: 'Arial, sans-serif',
@@ -47,7 +59,7 @@ const pStyle: React.CSSProperties = {
 };
 
 const inputStyle: React.CSSProperties = {
-    width: '60%',
+    width: '40%',
     backgroundColor: '#F2EFE5',
     color: 'black',
     padding: '8px',
@@ -55,7 +67,16 @@ const inputStyle: React.CSSProperties = {
     fontSize: '18px',
     borderRadius: '5px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+    textAlignLast: 'end',
     border: '1px solid #ccc',
     textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+};
 
+const dolarStyle: React.CSSProperties = {
+    color: 'black',
+    fontSize: '18px',
+    fontFamily: 'Arial, sans-serif',
+    textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+    position: 'absolute',
+    right: '15%',
 };
