@@ -58,6 +58,7 @@ const Species = () => {
                 <p style={p}>Minimum Ram Capacity</p>
                 <select
                     style={select}
+                    value={selected[0]}
                     onChange={(e) =>
                         setSelected([e.target.value, selected[1], selected[2]])
                     }
@@ -73,6 +74,7 @@ const Species = () => {
                 <p style={p}>Minimum Storage Capacity</p>
                 <select
                     style={select}
+                    value={selected[1]}
                     onChange={(e) =>
                         setSelected([selected[0], e.target.value, selected[2]])
                     }
@@ -88,6 +90,7 @@ const Species = () => {
                 <p style={p}>Minimum Battery Capacity</p>
                 <select
                     style={select}
+                    value={selected[2]}
                     onChange={(e) =>
                         setSelected([selected[0], selected[1], e.target.value])
                     }

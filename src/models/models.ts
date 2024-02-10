@@ -30,7 +30,7 @@ export interface ProductModel {
     image: string;
     star: number;
     price: number;
-    battery: number;
-    storage: number;
-    ram: number;
+    battery: string;
+    storage: string;
+    ram: string;
 }

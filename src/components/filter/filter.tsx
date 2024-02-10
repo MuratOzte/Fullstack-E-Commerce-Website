@@ -1,5 +1,5 @@
 //hooks
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 //slices
 import { filterSlice } from '@/GlobalRedux/slices';
@@ -11,15 +11,18 @@ import RangeSlider from './priceSlider';
 import { RootState } from '@/GlobalRedux/store';
 
 export default function Filter() {
-
     const dispatch = useDispatch();
 
     const selectedUrl = window.location.href.split('/').pop();
     const filterData = useSelector((state: RootState) => state.filter);
+    const unfilteredData = useSelector(
+        (state: RootState) => state.products.data
+    );
 
     useEffect(() => {
-        console.log(selectedUrl);
-        
+        setTimeout(() => {
+            dispatch(filterSlice.actions.filterProducts(unfilteredData));
+        }, 100);
     }, [filterData]);
 
     return (
