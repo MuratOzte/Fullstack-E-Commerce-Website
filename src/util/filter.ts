@@ -1,12 +1,6 @@
 import { url } from 'inspector';
 import { FilterModel, ProductModel } from '../models/models';
 
-export const filterByUrl = (
-    url: string,
-    filterData: FilterModel,
-    productData: ProductModel
-) => {};
-
 export const filterProducts = (
     productData: ProductModel[],
     filter: FilterModel,

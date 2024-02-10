@@ -1,8 +1,4 @@
 'use client';
-// packages
-import { Grid } from '@mui/material';
-import { AnimatePresence, motion } from 'framer-motion';
-import Image from 'next/image';
 //hooks
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,11 +7,9 @@ import { fetchProducts } from '@/GlobalRedux/slices/productsSlice';
 import allowedUrl from '@/util/allowedUrl';
 // components
 import { RootState } from '@/GlobalRedux/store';
-import Logo from '@/assets/logo.png';
-import Filter from '@/components/filter/filter';
+import FilterDrawer from '@/components/filter/FilterDrawer';
 import LoadingPage from '@/components/layout/loading';
 import Products from '@/components/product/Products';
-import FilterDrawer from '@/components/filter/FilterDrawer';
 
 const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
     params,
@@ -26,20 +20,10 @@ const CategoryPage: React.FC<{ params: { category: string | null } }> = ({
     const data = useSelector((state: RootState) => state.products.data);
 
     const dispatch = useDispatch();
-    const [scrollTop, setScrollTop] = useState(0);
-
-    const handleScroll = () => {
-        setScrollTop(window.scrollY);
-    };
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
         dispatch(fetchProducts() as any);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+    }, [params.category]);
 
     return (
         <>
