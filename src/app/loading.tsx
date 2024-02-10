@@ -1,9 +1,6 @@
+import LoadingPage from '@/components/layout/loading';
 const Loading = () => {
-    return (
-        <div>
-            <h1>Loading...</h1>
-        </div>
-    );
+    return <LoadingPage />;
 };
 
 export default Loading;

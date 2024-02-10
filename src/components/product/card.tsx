@@ -1,7 +1,9 @@
-import { Grid, Rating, Typography } from '@mui/material';
+import { Grid, Rating } from '@mui/material';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/GlobalRedux/store';
 
 interface CardProps {
     id: number;
@@ -14,6 +16,19 @@ interface CardProps {
 
 const Card: React.FC<{ data: CardProps }> = ({ data }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const filter = useSelector((state: RootState) => state.filter);
+    const [isChanged, setIsChanged] = useState(false);
+    
+    console.log(filter);
+
+    useEffect(() => {
+        console.log(isChanged);
+        setIsChanged(true);
+        const timeOut = setTimeout(() => {
+            setIsChanged(false);
+        }, 100);
+        return () => clearTimeout(timeOut);
+    }, [filter]);
 
     const handleMouseOver = () => {
         setIsHovered(true);
@@ -24,7 +39,11 @@ const Card: React.FC<{ data: CardProps }> = ({ data }) => {
     };
 
     return (
-        <>
+        <motion.div
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            exit={{ opacity: 1 }}
+        >
             <Grid
                 item
                 md={3}
@@ -171,7 +190,7 @@ const Card: React.FC<{ data: CardProps }> = ({ data }) => {
                     </motion.button>
                 </div>
             </Grid>
-        </>
+        </motion.div>
     );
 };
 

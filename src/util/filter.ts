@@ -1,19 +1,24 @@
+import { url } from 'inspector';
 import { FilterModel, ProductModel } from '../models/models';
 
 export const filterByUrl = (
     url: string,
     filterData: FilterModel,
     productData: ProductModel
-) => {
-    console.log(url);
-};
+) => {};
 
 export const filterProducts = (
     productData: ProductModel[],
-    filter: FilterModel
+    filter: FilterModel,
+    url: string
 ) => {
+    if (url == 'apple') {
+        url = 'iphone';
+    }
+
     const filteredData = productData.filter(
         (product: ProductModel) =>
+            product.name.toLowerCase().includes(url) &&
             product.price <= filter.maxPrice &&
             product.price >= filter.minPrice &&
             product.star >= filter.minStar &&

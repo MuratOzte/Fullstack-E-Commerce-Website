@@ -11,8 +11,10 @@ const Products = () => {
     const filter = useSelector((state: RootState) => state.filter);
     const products = useSelector((state: RootState) => state.products.data);
 
-    const filteredProducts = filterProducts(products, filter);
-    console.log(filteredProducts);
+    const url = window.location.pathname.split('/').pop();
+    
+
+    const filteredProducts = filterProducts(products, filter, url!);
 
     return (
         <Grid
