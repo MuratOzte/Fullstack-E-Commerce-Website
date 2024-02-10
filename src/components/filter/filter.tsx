@@ -1,16 +1,26 @@
+//hooks
+import { useSelector,useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+//slices
+import { filterSlice } from '@/GlobalRedux/slices';
+//components
+import Divider from './Divider';
 import Species from './Species';
 import StarSection from './StarSection';
 import RangeSlider from './priceSlider';
-import Divider from './Divider';
-import { filterByUrl } from '../../util/filter';
-import { useEffect } from 'react';
+import { RootState } from '@/GlobalRedux/store';
 
 export default function Filter() {
-    // const selectedUrl = window.location.href.split('/').pop();
+
+    const dispatch = useDispatch();
+
+    const selectedUrl = window.location.href.split('/').pop();
+    const filterData = useSelector((state: RootState) => state.filter);
 
     useEffect(() => {
-        // const filteredByUrl = filterByUrl(selectedUrl);
-    }, []);
+        console.log(selectedUrl);
+        
+    }, [filterData]);
 
     return (
         <div style={{ overflow: 'hidden' }}>
@@ -45,4 +55,3 @@ export default function Filter() {
         </div>
     );
 }
-

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { FilterModel } from '@/models/models';
+import { FilterModel, ProductModel } from '@/models/models';
 import { PayloadAction, Draft } from '@reduxjs/toolkit';
 
 const initialState: FilterModel = {
@@ -23,6 +23,23 @@ const filterSlice = createSlice({
             }>
         ) => {
             state[action.payload.key] = Number(action.payload.value);
+        },
+        filterProducts: (state: Draft<FilterModel>, action) => {
+            const filteredProducts = action.payload.filter(
+                (product: ProductModel) => {
+                    return (
+                        product.price >= state.minPrice &&
+                        product.price <= state.maxPrice &&
+                        product.star >= state.minStar &&
+                        (state.minBattery === 'All' ||
+                            product.battery === state.minBattery) &&
+                        (state.minStorage === 'All' ||
+                            product.storage === state.minStorage) &&
+                        (state.minRam === 'All' || product.ram === state.minRam)
+                    );
+                }
+            );
+            console.log(filteredProducts);
         },
     },
 });

@@ -62,12 +62,12 @@ const inputStyle: React.CSSProperties = {
     width: '40%',
     backgroundColor: '#F2EFE5',
     color: 'black',
-    padding: '8px',
+    padding: '16px',
     textAlign: 'center',
     fontSize: '18px',
     borderRadius: '5px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-    textAlignLast: 'end',
+    textAlignLast: 'left',
     border: '1px solid #ccc',
     textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
 };
@@ -78,5 +78,5 @@ const dolarStyle: React.CSSProperties = {
     fontFamily: 'Arial, sans-serif',
     textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
     position: 'absolute',
-    right: '15%',
+    right: '40%',
 };
