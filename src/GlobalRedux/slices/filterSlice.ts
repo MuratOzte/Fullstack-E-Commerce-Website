@@ -24,4 +24,4 @@ const filterSlice = createSlice({
     },
 });
 
-export default filterSlice.reducer;
+export default filterSlice;

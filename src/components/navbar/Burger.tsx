@@ -1,15 +1,29 @@
 'use client';
+import uiSlice from '@/GlobalRedux/slices/uiSlice';
+import { RootState } from '@/GlobalRedux/store';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Burger: React.FC<{ onClick: (boolean: boolean) => void }> = ({
     onClick,
 }) => {
-    const [isClicked, setIsClicked] = useState<boolean>(false);
+    const dispatch = useDispatch();
+    const isBurgerContainerOpen = useSelector(
+        (state: RootState) => state.ui.isBurgerContainerOpen
+    );
+    const [isClicked, setIsClicked] = useState<boolean>(isBurgerContainerOpen);
+
+    useEffect(() => {
+        setIsClicked(isBurgerContainerOpen);
+    }, [isBurgerContainerOpen]);
 
     const clickHandler = () => {
         setTimeout(() => {
             setIsClicked((prev) => !prev);
-        }, 200);
+            dispatch(
+                uiSlice.actions.setBurgerContainerOpen(!isBurgerContainerOpen)
+            );
+        }, 100);
     };
 
     onClick(isClicked);

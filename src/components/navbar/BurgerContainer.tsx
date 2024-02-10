@@ -48,7 +48,10 @@ const BurgerContainer: React.FC<{ onclick: (boolean: boolean) => void }> = ({
                         whileHover={{
                             scale: 1.1,
                         }}
-                        onClick={toggleBurger(false)}
+                        onClick={dispatch.bind(
+                            null,
+                            uiSlice.actions.setBurgerContainerOpen(false)
+                        )}
                         transition={{ bounce: 0, duration: 0.3 }}
                     >
                         {link.label}

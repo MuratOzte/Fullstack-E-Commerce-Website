@@ -1,20 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface ui {
-    isOpen: boolean;
+    isBurgerContainerOpen: boolean;
 }
 const initialState: ui = {
-    isOpen: false,
+    isBurgerContainerOpen: false,
 };
 
 const uiSlice = createSlice({
     name: 'ui',
     initialState,
     reducers: {
-        toggleBurger: (state, action) => {
-            state.isOpen = action.payload;
+        setBurgerContainerOpen: (state, action) => {
+            state.isBurgerContainerOpen = action.payload;
         },
     },
 });
 
-export default uiSlice.reducer;
+export default uiSlice;

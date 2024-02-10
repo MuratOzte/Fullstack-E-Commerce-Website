@@ -6,8 +6,15 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import BurgerTsx from './Burger';
 import BurgerContainer from './BurgerContainer';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@/GlobalRedux/store';
 
 const BurgerBar = () => {
+    const dispatch = useDispatch();
+    const isBurgerContainerOpen = useSelector(
+        (state: RootState) => state.ui.isBurgerContainerOpen
+    );
+
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const onclick = (boolean: boolean) => {
         setIsOpen(boolean);
@@ -38,7 +45,7 @@ const BurgerBar = () => {
                     <Image src={logo} alt="logo" width={32} height={32} />
                 </Link>
                 <AnimatePresence>
-                    {isOpen && <BurgerContainer onclick={onclick} />}
+                    {isBurgerContainerOpen && <BurgerContainer onclick={onclick} />}
                 </AnimatePresence>
                 <BurgerTsx onClick={onclick} />
             </motion.nav>
