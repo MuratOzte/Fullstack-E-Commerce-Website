@@ -61,7 +61,7 @@ export default function MinimumDistanceSlider() {
         <>
             <div style={divStyle}>
                 <Slider
-                    sx={{ width: 200, color: '#7D7C7C' }}
+                    sx={{ width: 200, color: '#7D7C7C', ml: '10%' }}
                     value={value1}
                     onChange={handleChange1}
                     valueLabelDisplay="on"

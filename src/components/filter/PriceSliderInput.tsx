@@ -51,7 +51,7 @@ const divStyle: React.CSSProperties = {
 };
 
 const pStyle: React.CSSProperties = {
-    width: '50%',
+    width: '60%',
     color: 'black',
     fontSize: '16px',
     fontFamily: 'Arial, sans-serif',
@@ -62,7 +62,7 @@ const inputStyle: React.CSSProperties = {
     width: '40%',
     backgroundColor: '#F2EFE5',
     color: 'black',
-    padding: '16px',
+    padding:'8px 8px 8px 16px',
     textAlign: 'center',
     fontSize: '18px',
     borderRadius: '5px',
@@ -78,5 +78,5 @@ const dolarStyle: React.CSSProperties = {
     fontFamily: 'Arial, sans-serif',
     textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
     position: 'absolute',
-    right: '40%',
+    right: '35%',
 };
