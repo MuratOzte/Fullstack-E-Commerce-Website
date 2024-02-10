@@ -4,9 +4,7 @@ import { RootState } from '@/GlobalRedux/store';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const Burger: React.FC<{ onClick: (boolean: boolean) => void }> = ({
-    onClick,
-}) => {
+const Burger = () => {
     const dispatch = useDispatch();
     const isBurgerContainerOpen = useSelector(
         (state: RootState) => state.ui.isBurgerContainerOpen
@@ -25,8 +23,6 @@ const Burger: React.FC<{ onClick: (boolean: boolean) => void }> = ({
             );
         }, 100);
     };
-
-    onClick(isClicked);
 
     return (
         <div onClick={clickHandler} style={burger}>

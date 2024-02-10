@@ -1,24 +1,23 @@
 'use client';
+//assets
 import logo from '@/assets/logo.png';
+//animation lib
 import { AnimatePresence, motion } from 'framer-motion';
+//components
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
 import BurgerTsx from './Burger';
 import BurgerContainer from './BurgerContainer';
-import { useSelector, useDispatch } from 'react-redux';
+//hooks
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+//models
 import { RootState } from '@/GlobalRedux/store';
 
 const BurgerBar = () => {
-    const dispatch = useDispatch();
     const isBurgerContainerOpen = useSelector(
         (state: RootState) => state.ui.isBurgerContainerOpen
     );
-
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const onclick = (boolean: boolean) => {
-        setIsOpen(boolean);
-    };
 
     const [scrollTop, setScrollTop] = useState(0);
 
@@ -45,9 +44,9 @@ const BurgerBar = () => {
                     <Image src={logo} alt="logo" width={32} height={32} />
                 </Link>
                 <AnimatePresence>
-                    {isBurgerContainerOpen && <BurgerContainer onclick={onclick} />}
+                    {isBurgerContainerOpen && <BurgerContainer />}
                 </AnimatePresence>
-                <BurgerTsx onClick={onclick} />
+                <BurgerTsx />
             </motion.nav>
         </>
     );

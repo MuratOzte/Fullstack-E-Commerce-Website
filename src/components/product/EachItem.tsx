@@ -34,7 +34,8 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                 container
                 justifyContent="center"
                 sx={{
-                    backgroundColor: '#DCF2F1',
+                    background:
+                        'radial-gradient(343px at 46.3% 47.5%, rgb(242, 242, 242) 0%, rgb(241, 241, 241) 72.9%)',
                     marginX: {
                         xs: '10px',
                         md: '40px',
@@ -42,13 +43,14 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                     marginY: '20px',
                     maxWidth: {
                         xs: '42%',
-                        md: '200px',
+                        md: '250px',
                     },
                     padding: '0!important',
                     height: {
                         xs: '300px',
-                        md: '320px',
+                        md: '350px',
                     },
+                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
                 }}
             >
                 <Grid
@@ -56,7 +58,6 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                     xs={12}
                     display="flex"
                     justifyContent="center"
-                    sx={{ backgroundColor: '#f1f5f9' }}
                     padding={0}
                 >
                     <motion.div
@@ -65,7 +66,7 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                     >
                         <Image
                             layout="responsive"
-                            style={{ borderRadius: '50%', objectFit: 'cover' }}
+                            priority
                             height={120}
                             width={120}
                             alt={data.name}
@@ -106,11 +107,13 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                             color: '#484848',
                         }}
                     >
-                        {!isHovered ? data.name.length > 16
-                            ? `${data.name.slice(0, 16)}...`
-                            : data.name :data.name.length > 24
-                            ? `${data.name.slice(0, 16)}...`
-                            : data.name }
+                        {!isHovered
+                            ? data.name.length > 15
+                                ? `${data.name.slice(0, 15)}...`
+                                : data.name
+                            : data.name.length > 24
+                            ? `${data.name.slice(0, 15)}...`
+                            : data.name}
                     </motion.p>
                 </Grid>
                 <Grid

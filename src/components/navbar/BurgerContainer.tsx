@@ -16,9 +16,7 @@ const links: { href: string; label: string }[] = [
 
 import React from 'react';
 
-const BurgerContainer: React.FC<{ onclick: (boolean: boolean) => void }> = ({
-    onclick,
-}) => {
+const BurgerContainer = () => {
     const dispatch = useDispatch();
 
     return (
