@@ -1,4 +1,8 @@
-import SpeciesSlider from './SpeciesSlider';
+//hooks
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+//slices
+import { filterSlice } from '@/GlobalRedux/slices';
 
 const storage = [
     'All',
@@ -23,11 +27,41 @@ const battery = [
 
 const ram = ['All', '2GB', '3GB', '4GB', '6GB', '8GB', '12GB'];
 const Species = () => {
+    const dispatch = useDispatch();
+
+    const [selected, setSelected] = useState<string[]>(['All', 'All', 'All']);
+
+    useEffect(() => {
+        dispatch(
+            filterSlice.actions.setFilters({
+                key: 'minRam',
+                value: selected[0],
+            })
+        );
+        dispatch(
+            filterSlice.actions.setFilters({
+                key: 'minStorage',
+                value: selected[1],
+            })
+        );
+        dispatch(
+            filterSlice.actions.setFilters({
+                key: 'minBattery',
+                value: selected[2],
+            })
+        );
+    }, [selected]);
+
     return (
         <>
             <div style={div}>
                 <p style={p}>Minimum Ram Capacity</p>
-                <select style={select}>
+                <select
+                    style={select}
+                    onChange={(e) =>
+                        setSelected([e.target.value, selected[1], selected[2]])
+                    }
+                >
                     {ram.map((item, index) => (
                         <option key={index} value={item}>
                             {item}
@@ -37,7 +71,12 @@ const Species = () => {
             </div>
             <div style={div}>
                 <p style={p}>Minimum Storage Capacity</p>
-                <select style={select}>
+                <select
+                    style={select}
+                    onChange={(e) =>
+                        setSelected([selected[0], e.target.value, selected[2]])
+                    }
+                >
                     {storage.map((item, index) => (
                         <option key={index} value={item}>
                             {item}
@@ -47,7 +86,12 @@ const Species = () => {
             </div>
             <div style={div}>
                 <p style={p}>Minimum Battery Capacity</p>
-                <select style={select}>
+                <select
+                    style={select}
+                    onChange={(e) =>
+                        setSelected([selected[0], selected[1], e.target.value])
+                    }
+                >
                     {battery.map((item, index) => (
                         <option key={index} value={item}>
                             {item}
@@ -70,7 +114,7 @@ const div: React.CSSProperties = {
 };
 
 const p: React.CSSProperties = {
-    width: '65%',
+    width: '50%',
     color: 'black',
     fontSize: '14px',
     fontFamily: 'Arial, sans-serif',
@@ -80,7 +124,7 @@ const p: React.CSSProperties = {
 };
 
 const select: React.CSSProperties = {
-    width: '30%',
+    width: '40%',
     display: 'flex',
     justifyContent: 'flex-start',
     marginLeft: '5%',

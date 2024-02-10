@@ -1,8 +1,7 @@
 'use client';
 import { configureStore } from '@reduxjs/toolkit';
-import productSlice from './slices/productsSlice';
-import filterSlice from './slices/filterSlice';
-import uiSlice from './slices/uiSlice';
+//slices
+import { productSlice, filterSlice, uiSlice } from './slices/index';
 export const store = configureStore({
     reducer: {
         products: productSlice.reducer,

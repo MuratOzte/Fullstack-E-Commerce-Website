@@ -48,6 +48,9 @@ const FilterDrawer = () => {
                 anchor="left"
                 open={open}
                 onClose={handleClose}
+                sx={{
+                    justifyContent: 'center',
+                }}
                 ModalProps={{
                     keepMounted: true,
                     BackdropProps: {

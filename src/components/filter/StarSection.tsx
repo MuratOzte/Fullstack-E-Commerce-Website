@@ -1,8 +1,25 @@
-import { useState } from 'react';
+//hooks
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+//icons
 import StarRateIcon from '@mui/icons-material/StarRate';
+//slices
+import { filterSlice } from '@/GlobalRedux/slices';
 
 export default function StarRate() {
+    const dispatch = useDispatch();
+
     const [selected, setSelected] = useState(0);
+
+    useEffect(() => {
+        dispatch(
+            filterSlice.actions.setFilters({
+                key: 'minStar',
+                value: selected + 1,
+            })
+        );
+    }, [selected]);
+
     const texts = [
         '1 Star Or Above',
         '2 Stars Or Above',
@@ -22,9 +39,6 @@ export default function StarRate() {
                     <input
                         type="checkbox"
                         style={checkBoxStyle}
-                        onChange={() => {
-                            console.log(index);
-                        }}
                         checked={selected === index}
                     />
                     <StarRateIcon sx={starStyle} />

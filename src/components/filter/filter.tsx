@@ -16,8 +16,7 @@ export default function Filter() {
         <div style={{ overflow: 'hidden' }}>
             <div
                 style={{
-                    marginTop: '15%',
-                    height: '20vh',
+                    marginTop: '30%',
                     display: 'flex',
                     justifyContent: 'center',
                     marginBottom: '10%',
@@ -28,7 +27,6 @@ export default function Filter() {
             <Divider />
             <div
                 style={{
-                    marginTop: '5%',
                     height: '20vh',
                 }}
             >

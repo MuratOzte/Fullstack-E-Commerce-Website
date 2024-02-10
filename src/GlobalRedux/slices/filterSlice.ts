@@ -17,9 +17,12 @@ const filterSlice = createSlice({
     reducers: {
         setFilters: (
             state: Draft<FilterModel>,
-            action: PayloadAction<{ key: keyof FilterModel; value: number }>
+            action: PayloadAction<{
+                key: keyof FilterModel;
+                value: number | string;
+            }>
         ) => {
-            state[action.payload.key] = action.payload.value;
+            state[action.payload.key] = Number(action.payload.value);
         },
     },
 });

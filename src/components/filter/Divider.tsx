@@ -6,7 +6,7 @@ const Divider = () => {
                     width: '%40',
                     backgroundColor: 'gray',
                     height: '2px',
-                    margin: '0 10%',
+                    margin: '10% 10%',
                 }}
             />
         </>

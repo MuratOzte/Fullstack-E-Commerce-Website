@@ -1,7 +1,11 @@
-import { TextField } from '@mui/material';
+//components
 import Slider from '@mui/material/Slider';
-import * as React from 'react';
 import PriceSliderInput from './PriceSliderInput';
+//hooks
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+//slices
+import { filterSlice } from '@/GlobalRedux/slices';
 
 function valuetext(value: number) {
     return `${value}$`;
@@ -10,7 +14,26 @@ function valuetext(value: number) {
 const minDistance = 150;
 
 export default function MinimumDistanceSlider() {
-    const [value1, setValue1] = React.useState<number[]>([0, 1500]);
+    const dispatch = useDispatch();
+
+    const [value1, setValue1] = useState<number[]>([0, 1500]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            dispatch(
+                filterSlice.actions.setFilters({
+                    key: 'minPrice',
+                    value: value1[0],
+                })
+            );
+            dispatch(
+                filterSlice.actions.setFilters({
+                    key: 'maxPrice',
+                    value: value1[1],
+                })
+            );
+        }, 100);
+    }, [value1]);
 
     const handleChange1 = (
         event: Event,
