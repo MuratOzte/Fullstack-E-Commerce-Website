@@ -42,8 +42,8 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                     },
                     marginY: '20px',
                     maxWidth: {
-                        xs: '42%',
-                        md: '250px',
+                        xs: '40%',
+                        md: '200px',
                     },
                     padding: '0!important',
                     height: {

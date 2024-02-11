@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import BurgerTsx from './Burger';
 import BurgerContainer from './BurgerContainer';
+import Acount from './Acount';
 //hooks
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -40,19 +41,23 @@ const BurgerBar = () => {
                 animate={{ y: scrollTop > 60 ? -100 : 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
             >
-                <Link href="/" style={logoLinkStyle}>
+                <Link href="/" style={logoStyle}>
                     <Image src={logo} alt="logo" width={32} height={32} />
                 </Link>
                 <AnimatePresence>
                     {isBurgerContainerOpen && <BurgerContainer />}
                 </AnimatePresence>
                 <BurgerTsx />
+                <Acount />
             </motion.nav>
         </>
     );
 };
 
 const navStyle: React.CSSProperties = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     backgroundColor: '#ffffff',
     borderBottom: '2px solid #e0e0e0',
     padding: 10,
@@ -63,15 +68,10 @@ const navStyle: React.CSSProperties = {
     height: 50,
 };
 
-const logoLinkStyle: React.CSSProperties = {
+const logoStyle: React.CSSProperties = {
     position: 'absolute',
-    top: '1%',
-    left: '6%',
-    alignItems: 'center',
-    marginBottom: '3%',
-    display: 'flex',
-    padding: '0.3%',
-    color: 'black',
+    left: '10%',
+    cursor: 'pointer',
 };
 
 export default BurgerBar;
