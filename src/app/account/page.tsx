@@ -1,4 +1,4 @@
-import Login from '@/components/acount/Login';
+import LoginContainer from '@/components/acount/LoginContainer';
 
 const Account = () => {
     return (
@@ -8,7 +8,7 @@ const Account = () => {
                 color: 'black',
             }}
         >
-            <Login />
+            <LoginContainer />
         </div>
     );
 };

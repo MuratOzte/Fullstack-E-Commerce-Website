@@ -34,6 +34,7 @@ export default LoginRegisterSwitch;
 
 const entireDivStyle: React.CSSProperties = {
     display: 'flex',
+    marginBottom: '16px',
     border: '2px solid grey',
     justifyContent: 'center',
     borderRadius: '20px',

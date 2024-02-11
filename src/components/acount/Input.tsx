@@ -1,4 +1,10 @@
-import { useState } from 'react';
+//icons
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { IconButton } from '@mui/material';
+//hooks
+import { useState, useEffect } from 'react';
+
 interface InputProps {
     type: string;
     placeholder: string;
@@ -6,8 +12,15 @@ interface InputProps {
 
 const Input: React.FC<InputProps> = ({ type, placeholder }) => {
     const [hover, setHover] = useState(false);
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [width, setWidth] = useState(0);
+
+    useEffect(() => {
+        setWidth(window.innerWidth);
+    }, []);
+
     return (
-        <>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
             <input
                 type={type}
                 placeholder={placeholder}
@@ -19,7 +32,23 @@ const Input: React.FC<InputProps> = ({ type, placeholder }) => {
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
             />
-        </>
+            {type === 'password' && (
+                <IconButton
+                    onClick={() => setIsPasswordVisible((prev) => !prev)}
+                    style={{
+                        position: 'absolute',
+                        right: width < 400 ? '20%' : '42.8%',
+                        top: '52.3%',
+                    }}
+                >
+                    {isPasswordVisible ? (
+                        <VisibilityIcon />
+                    ) : (
+                        <VisibilityOffIcon />
+                    )}
+                </IconButton>
+            )}
+        </div>
     );
 };
 
