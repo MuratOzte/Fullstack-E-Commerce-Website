@@ -14,7 +14,7 @@ const Login = () => {
         try {
             setIsLoading(true);
             const response = await fetch('/api/users', {
-                method: 'GET',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -24,6 +24,7 @@ const Login = () => {
             console.log(responseData);
             setIsLoading(false);
         } catch (error: any) {
+            console.log(error);
             setIsLoading(false);
             setIsError(error);
         }

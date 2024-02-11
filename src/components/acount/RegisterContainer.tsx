@@ -7,7 +7,7 @@ const RegisterContainer = () => {
 
     const submitBtnHandler = async () => {
         try {
-            const response = await fetch('/api/users', {
+            const response = await fetch('/api/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
