@@ -8,19 +8,27 @@ import { useState } from 'react';
 
 const Login = () => {
     const [data, setData] = useState({ username: '', password: '' });
+    const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState<string | null>(null);
 
-    const submitBtnHandler = () => {
-        console.log('submitBtnHandler', data);
-        fetch('/api/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-            .then((res) => res.json())
-            .then((data) => console.log(data))
-            .catch((e) => console.log(e));
+    const submitBtnHandler = async () => {
+        try {
+            setIsLoading(true);
+            const response = await fetch('/api/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            const responseData = await response.json();
+            console.log(responseData);
+            setIsLoading(false);
+        } catch (error: any) {
+            setIsLoading(false);
+            setIsError(error);
+            console.log(error);
+        }
     };
 
     return (
@@ -43,7 +51,7 @@ const Login = () => {
                     ':hover': { backgroundColor: 'white', color: 'black' },
                     ...buttonStyle,
                 }}
-                loading={false}
+                loading={isLoading}
                 disabled={data.username === '' || data.password === ''}
                 variant="contained"
                 color="primary"

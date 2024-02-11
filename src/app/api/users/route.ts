@@ -1,5 +1,6 @@
 import { MongoClient } from 'mongodb';
 import { NextRequest, NextResponse } from 'next/server';
+import bcrypt from 'bcrypt';
 
 export async function GET(req: NextRequest) {
     try {
@@ -39,9 +40,16 @@ export async function POST(req: NextRequest) {
         const usersCollection = db.collection('users');
         const data = await req.json();
 
+        data.password = await bcrypt.hash(data.password, 10);
+
+        // bcrypt.compare(data.password, deneme, function (err, result) {
+        //     console.log('result', result);
+        // });
+
         const user = await usersCollection.findOne({ username: data.username });
 
         if (user) {
+            console.log('user', user);
             client.close();
             return NextResponse.json({ message: 'User already exists' });
         }
