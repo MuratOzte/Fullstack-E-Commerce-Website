@@ -145,7 +145,12 @@ const EachItem: React.FC<{ data: CardProps }> = ({ data }) => {
                             justifyContent: 'flex-start',
                         }}
                     >
-                        <Rating readOnly size={'small'} value={data.star} />
+                        <Rating
+                            readOnly
+                            size={'small'}
+                            value={data.star}
+                            precision={0.5}
+                        />
                     </motion.div>
                 </Grid>
                 <Grid

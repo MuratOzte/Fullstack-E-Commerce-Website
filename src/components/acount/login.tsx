@@ -1,5 +1,13 @@
+'use client';
+
+import LoginRegisterSwitch from './LoginRegisterSwitch';
+
 const Login = () => {
-    return <div>Login Page</div>;
+    return (
+        <>
+            <LoginRegisterSwitch />
+        </>
+    );
 };
 
 export default Login;
