@@ -12,6 +12,10 @@ export async function GET(req: NextRequest) {
 
         const user = await usersCollection.findOne({ username: data.username });
 
+        bcrypt.compare(data.password, user?.password, function (err, result) {
+            console.log('result', result);
+        });
+
         if (!user) {
             client.close();
             return NextResponse.json({ message: 'User not found' });
@@ -49,17 +53,16 @@ export async function POST(req: NextRequest) {
         const user = await usersCollection.findOne({ username: data.username });
 
         if (user) {
-            console.log('user', user);
             client.close();
             return NextResponse.json({ message: 'User already exists' });
         }
 
         await usersCollection.insertOne(data);
-        console.log('data', data);
 
         client.close();
         return NextResponse.json({ message: 'User created' });
     } catch (e) {
+        console.log(e);
         return NextResponse.json({
             message: 'An error occurred',
             data: e,

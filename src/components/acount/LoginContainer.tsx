@@ -2,7 +2,6 @@
 //components
 import LoadingButton from '@mui/lab/LoadingButton';
 import Input from './Input';
-import LoginRegisterSwitch from './LoginRegisterSwitch';
 //hooks
 import { useState } from 'react';
 
@@ -15,7 +14,7 @@ const Login = () => {
         try {
             setIsLoading(true);
             const response = await fetch('/api/users', {
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -27,13 +26,11 @@ const Login = () => {
         } catch (error: any) {
             setIsLoading(false);
             setIsError(error);
-            console.log(error);
         }
     };
 
     return (
         <div style={entireDivStyle}>
-            <LoginRegisterSwitch />
             <Input
                 type="text"
                 placeholder="username"
@@ -48,7 +45,10 @@ const Login = () => {
             />
             <LoadingButton
                 sx={{
-                    ':hover': { backgroundColor: 'white', color: 'black' },
+                    ':hover': {
+                        backgroundColor: 'white',
+                        color: 'black',
+                    },
                     ...buttonStyle,
                 }}
                 loading={isLoading}
@@ -66,7 +66,6 @@ const Login = () => {
 };
 
 const entireDivStyle: React.CSSProperties = {
-    border: '2px solid black',
     padding: '16px 64px 16px 64px',
     display: 'flex',
     flexDirection: 'column',

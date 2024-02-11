@@ -10,8 +10,9 @@ interface InputProps {
     placeholder: string;
     setData: (data: any) => void;
     data: {
-        username: string;
-        password: string;
+        name?: string;
+        username?: string;
+        password?: string;
     };
 }
 
@@ -28,40 +29,45 @@ const Input: React.FC<InputProps> = ({ type, placeholder, setData, data }) => {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <input
-                type={passwordType}
-                placeholder={placeholder}
-                onChange={(e) =>
-                    setData({ ...data, [placeholder]: e.target.value })
-                }
-                style={{
-                    ...inputStyle,
-                    borderColor: hover ? 'black' : '#ccc',
-                    boxShadow: hover ? '0 0 2px black' : 'none',
-                }}
-                onMouseEnter={() => setHover(true)}
-                onMouseLeave={() => setHover(false)}
-            />
-            {type === 'password' && (
-                <IconButton
-                    onClick={() =>
-                        setPasswordType(
-                            passwordType === 'password' ? 'text' : 'password'
-                        )
+            <div style={{ position: 'relative', width: '100%' }}>
+                <input
+                    type={passwordType}
+                    placeholder={placeholder}
+                    onChange={(e) =>
+                        setData({ ...data, [placeholder]: e.target.value })
                     }
                     style={{
-                        position: 'absolute',
-                        right: width < 400 ? '20%' : '42.8%',
-                        top: '52.3%',
+                        ...inputStyle,
+                        borderColor: hover ? 'black' : '#ccc',
+                        boxShadow: hover ? '0 0 2px black' : 'none',
                     }}
-                >
-                    {passwordType == 'password' ? (
-                        <VisibilityIcon />
-                    ) : (
-                        <VisibilityOffIcon />
-                    )}
-                </IconButton>
-            )}
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
+                />
+                {type === 'password' && (
+                    <IconButton
+                        onClick={() =>
+                            setPasswordType(
+                                passwordType === 'password'
+                                    ? 'text'
+                                    : 'password'
+                            )
+                        }
+                        style={{
+                            position: 'absolute',
+                            right: '8px',
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                        }}
+                    >
+                        {passwordType === 'password' ? (
+                            <VisibilityIcon />
+                        ) : (
+                            <VisibilityOffIcon />
+                        )}
+                    </IconButton>
+                )}
+            </div>
         </div>
     );
 };

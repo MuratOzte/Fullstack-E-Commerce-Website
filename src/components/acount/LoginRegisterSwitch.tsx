@@ -1,8 +1,18 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useDispatch } from 'react-redux';
+import { uiSlice } from '@/GlobalRedux/slices';
 const LoginRegisterSwitch = () => {
+    const dispatch = useDispatch();
+
     const [isLogin, setIsLogin] = useState(true);
+
+    useEffect(() => {
+        dispatch(
+            uiSlice.actions.setLoginOrRegister(isLogin ? 'login' : 'register')
+        );
+    }, [isLogin]);
 
     return (
         <div style={entireDivStyle}>

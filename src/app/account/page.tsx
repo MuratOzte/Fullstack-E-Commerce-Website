@@ -1,4 +1,4 @@
-import LoginContainer from '@/components/acount/LoginContainer';
+import EntireForm from '@/components/acount/EntireForm';
 
 const Account = () => {
     return (
@@ -8,7 +8,7 @@ const Account = () => {
                 color: 'black',
             }}
         >
-            <LoginContainer />
+            <EntireForm />
         </div>
     );
 };
