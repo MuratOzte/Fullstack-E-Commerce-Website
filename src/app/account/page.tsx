@@ -1,4 +1,4 @@
-import Login from '@/components/acount/login';
+import Login from '@/components/acount/Login';
 
 const Account = () => {
     return (
