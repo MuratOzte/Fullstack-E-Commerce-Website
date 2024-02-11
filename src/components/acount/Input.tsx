@@ -3,27 +3,37 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { IconButton } from '@mui/material';
 //hooks
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface InputProps {
     type: string;
     placeholder: string;
+    setData: (data: any) => void;
+    data: {
+        username: string;
+        password: string;
+    };
 }
 
-const Input: React.FC<InputProps> = ({ type, placeholder }) => {
+const Input: React.FC<InputProps> = ({ type, placeholder, setData, data }) => {
     const [hover, setHover] = useState(false);
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-    const [width, setWidth] = useState(0);
+    const [passwordType, setPasswordType] = useState(type);
+    const [width, setWidth] = useState(1200);
 
     useEffect(() => {
         setWidth(window.innerWidth);
     }, []);
 
+    const inputRef = useRef<HTMLInputElement>(null);
+
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <input
-                type={type}
+                type={passwordType}
                 placeholder={placeholder}
+                onChange={(e) =>
+                    setData({ ...data, [placeholder]: e.target.value })
+                }
                 style={{
                     ...inputStyle,
                     borderColor: hover ? 'black' : '#ccc',
@@ -34,14 +44,18 @@ const Input: React.FC<InputProps> = ({ type, placeholder }) => {
             />
             {type === 'password' && (
                 <IconButton
-                    onClick={() => setIsPasswordVisible((prev) => !prev)}
+                    onClick={() =>
+                        setPasswordType(
+                            passwordType === 'password' ? 'text' : 'password'
+                        )
+                    }
                     style={{
                         position: 'absolute',
                         right: width < 400 ? '20%' : '42.8%',
                         top: '52.3%',
                     }}
                 >
-                    {isPasswordVisible ? (
+                    {passwordType == 'password' ? (
                         <VisibilityIcon />
                     ) : (
                         <VisibilityOffIcon />

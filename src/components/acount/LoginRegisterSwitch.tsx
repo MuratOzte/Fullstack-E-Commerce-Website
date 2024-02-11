@@ -9,7 +9,7 @@ const LoginRegisterSwitch = () => {
             <motion.div
                 style={{
                     ...loginButtonStyle,
-                    backgroundColor: isLogin ? 'grey' : 'white',
+                    backgroundColor: isLogin ? 'black' : 'white',
                     color: !isLogin ? 'black' : 'white',
                 }}
                 onClick={() => setIsLogin(!isLogin)}
@@ -19,7 +19,7 @@ const LoginRegisterSwitch = () => {
             <motion.div
                 style={{
                     ...registerButtonStyle,
-                    backgroundColor: !isLogin ? 'grey' : 'white',
+                    backgroundColor: !isLogin ? 'black' : 'white',
                     color: isLogin ? 'black' : 'white',
                 }}
                 onClick={() => setIsLogin(!isLogin)}
