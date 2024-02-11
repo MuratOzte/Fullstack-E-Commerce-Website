@@ -9,6 +9,20 @@ import { useState } from 'react';
 const Login = () => {
     const [data, setData] = useState({ username: '', password: '' });
 
+    const submitBtnHandler = () => {
+        console.log('submitBtnHandler', data);
+        fetch('/api/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then((data) => console.log(data))
+            .catch((e) => console.log(e));
+    };
+
     return (
         <div style={entireDivStyle}>
             <LoginRegisterSwitch />
@@ -33,6 +47,7 @@ const Login = () => {
                 disabled={data.username === '' || data.password === ''}
                 variant="contained"
                 color="primary"
+                onClick={submitBtnHandler}
             >
                 {data.username === '' || data.password === ''
                     ? 'Fill in the fields'

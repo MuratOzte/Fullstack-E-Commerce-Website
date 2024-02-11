@@ -16,7 +16,7 @@ const sendProductAction = async (formData: FormData) => {
 
     const postData = async () => {
         try {
-            const response = await fetch('/api/create-product', {
+            const response = await fetch('/api/products', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
