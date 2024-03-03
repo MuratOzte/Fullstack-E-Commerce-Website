@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
 
         if (user) {
             client.close();
-            return NextResponse.json({ message: 'User already exists' });
+            return new Error('User already exists');
         }
 
         await usersCollection.insertOne(data);

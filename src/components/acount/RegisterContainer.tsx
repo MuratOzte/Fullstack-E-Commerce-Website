@@ -1,12 +1,16 @@
 import Input from './Input';
 import { useState } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { Alert } from '@mui/material';
 
 const RegisterContainer = () => {
     const [data, setData] = useState({ name: '', username: '', password: '' });
+    const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState<string | null>(null);
 
     const submitBtnHandler = async () => {
         try {
+            setIsLoading(true);
             const response = await fetch('/api/register', {
                 method: 'POST',
                 headers: {
@@ -14,10 +18,13 @@ const RegisterContainer = () => {
                 },
                 body: JSON.stringify(data),
             });
+            setIsLoading(false);
             const responseData = await response.json();
-            console.log(responseData);
+            setIsError(null);
         } catch (error: any) {
             console.log(error);
+            setIsLoading(false);
+            setIsError(error);
         }
     };
 
@@ -49,7 +56,7 @@ const RegisterContainer = () => {
                     },
                     ...buttonStyle,
                 }}
-                loading={false}
+                loading={isLoading}
                 disabled={data.username === '' || data.password === ''}
                 variant="contained"
                 color="primary"
@@ -59,6 +66,10 @@ const RegisterContainer = () => {
                     ? 'Fill in the fields'
                     : 'Login'}
             </LoadingButton>
+            {isError && <Alert sx={{
+                width: '100%',
+                marginTop: '16px',
+            }} severity="error">{'Something Happend'}</Alert>}
         </div>
     );
 };
