@@ -20,7 +20,10 @@ export async function POST(req: NextRequest) {
 
         if (user) {
             client.close();
-            return new Error('User already exists');
+            return new Response(
+                JSON.stringify({ message: 'User already exists' }),
+                { status: 400, headers: { 'Content-Type': 'application/json' } }
+            );
         }
 
         await usersCollection.insertOne(data);
@@ -32,6 +35,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({
             message: 'An error occurred',
             data: e,
+            status: 500,
         });
     }
 }

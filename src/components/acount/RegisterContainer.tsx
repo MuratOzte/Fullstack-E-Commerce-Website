@@ -18,13 +18,18 @@ const RegisterContainer = () => {
                 },
                 body: JSON.stringify(data),
             });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.log(errorData.message);
+                setIsError(errorData.message || 'An error occurred');
+            }
+
             setIsLoading(false);
             const responseData = await response.json();
             setIsError(null);
         } catch (error: any) {
-            console.log(error);
             setIsLoading(false);
-            setIsError(error);
         }
     };
 
@@ -66,10 +71,17 @@ const RegisterContainer = () => {
                     ? 'Fill in the fields'
                     : 'Login'}
             </LoadingButton>
-            {isError && <Alert sx={{
-                width: '100%',
-                marginTop: '16px',
-            }} severity="error">{'Something Happend'}</Alert>}
+            {isError && (
+                <Alert
+                    sx={{
+                        width: '100%',
+                        marginTop: '16px',
+                    }}
+                    severity="error"
+                >
+                    {isError}
+                </Alert>
+            )}
         </div>
     );
 };
