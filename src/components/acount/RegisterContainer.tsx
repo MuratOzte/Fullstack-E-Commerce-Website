@@ -69,7 +69,7 @@ const RegisterContainer = () => {
             >
                 {data.username === '' || data.password === ''
                     ? 'Fill in the fields'
-                    : 'Login'}
+                    : 'Register'}
             </LoadingButton>
             {isError && (
                 <Alert
