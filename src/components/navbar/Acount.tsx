@@ -1,13 +1,12 @@
 'use client';
-import { Grid, IconButton } from '@mui/material';
-import PersonIcon from '@mui/icons-material/Person';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import PersonIcon from '@mui/icons-material/Person';
+import { Grid, IconButton } from '@mui/material';
 //hooks
-import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@/GlobalRedux/store';
 import { uiSlice } from '@/GlobalRedux/slices';
+import { RootState } from '@/GlobalRedux/store';
+import { useRouter } from 'next/navigation';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Acount = () => {
     const router = useRouter();
@@ -23,6 +22,7 @@ const Acount = () => {
     const exitClickHandler = () => {
         localStorage.clear();
         dispatch(uiSlice.actions.setToken(''));
+        dispatch(uiSlice.actions.setName(''));
     };
 
     return (
