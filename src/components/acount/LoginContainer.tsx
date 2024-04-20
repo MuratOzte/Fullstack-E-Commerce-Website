@@ -21,7 +21,8 @@ const Login = () => {
                 body: JSON.stringify(data),
             });
             const responseData = await response.json();
-            console.log(responseData);
+            localStorage.setItem('token', responseData.token);
+            localStorage.setItem('name', responseData.user.name);
             setIsLoading(false);
         } catch (error: any) {
             console.log(error);

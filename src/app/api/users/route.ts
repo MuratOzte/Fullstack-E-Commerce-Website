@@ -10,7 +10,6 @@ export async function POST(req: NextRequest) {
         const usersCollection = db.collection('users');
 
         const data = await req.json();
-        console.log('Request JSON Data:', data);
 
         const user = await usersCollection.findOne({ username: data.username });
         if (!user) {
