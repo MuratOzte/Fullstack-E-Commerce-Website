@@ -4,8 +4,13 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import Input from './Input';
 //hooks
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { RootState } from '@/GlobalRedux/store';
+import { uiSlice } from '@/GlobalRedux/slices';
 
 const Login = () => {
+    const dispatch = useDispatch();
+
     const [data, setData] = useState({ username: '', password: '' });
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState<string | null>(null);
@@ -21,8 +26,8 @@ const Login = () => {
                 body: JSON.stringify(data),
             });
             const responseData = await response.json();
-            localStorage.setItem('token', responseData.token);
-            localStorage.setItem('name', responseData.user.name);
+            dispatch(uiSlice.actions.setToken(responseData.token));
+            dispatch(uiSlice.actions.setName(responseData.user.name));
             setIsLoading(false);
         } catch (error: any) {
             console.log(error);

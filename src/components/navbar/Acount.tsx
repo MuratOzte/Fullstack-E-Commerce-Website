@@ -2,34 +2,28 @@
 import { Grid, IconButton } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+//hooks
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@/GlobalRedux/store';
+import { uiSlice } from '@/GlobalRedux/slices';
 
 const Acount = () => {
     const router = useRouter();
+    const dispatch = useDispatch();
 
-    const [token, setToken] = useState('');
-
-    useEffect(() => {
-        setToken(localStorage.getItem('token') || '');
-    }, [localStorage.getItem('token')]);
+    const token = useSelector((state: RootState) => state.ui.token);
+    const name = useSelector((state: RootState) => state.ui.name);
 
     const clickHandler = () => {
         router.replace('/account');
     };
 
-    window.addEventListener('storage', () => {
-        console.log('merah');
-
-        setToken(localStorage.getItem('token') || '');
-    });
-
     const exitClickHandler = () => {
         localStorage.clear();
-        setToken('');
+        dispatch(uiSlice.actions.setToken(''));
     };
-
-    window.addEventListener;
 
     return (
         <Grid
@@ -58,7 +52,7 @@ const Acount = () => {
                 onClick={clickHandler}
             >
                 <PersonIcon color="action" fontSize="large" />
-                {localStorage.getItem('name') || 'Sign In'}
+                {name || 'Sign In'}
             </p>
             {token ? (
                 <IconButton onClick={exitClickHandler}>
