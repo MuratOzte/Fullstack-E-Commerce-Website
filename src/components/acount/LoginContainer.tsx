@@ -56,6 +56,10 @@ const Login = () => {
                         backgroundColor: 'white',
                         color: 'black',
                     },
+                    ':disabled': {
+                        backgroundColor: 'GrayText',
+                        color: 'white',
+                    },
                     ...buttonStyle,
                 }}
                 loading={isLoading}
@@ -64,9 +68,10 @@ const Login = () => {
                 color="primary"
                 onClick={submitBtnHandler}
             >
-                {data.username === '' || data.password === ''
-                    ? 'Fill in the fields'
-                    : 'Login'}
+                {data.username === '' ||
+                    (data.password === '' && 'Fill in the form')}
+                {!isLoading && 'Login'}
+                {isLoading && ' '}
             </LoadingButton>
         </div>
     );
@@ -83,6 +88,7 @@ const entireDivStyle: React.CSSProperties = {
 
 const buttonStyle: React.CSSProperties = {
     width: '100%',
+    height: '40px',
     marginTop: '16px',
     padding: '2px',
     fontSize: '1rem',

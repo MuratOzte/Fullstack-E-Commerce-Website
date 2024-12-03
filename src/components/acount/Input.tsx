@@ -83,7 +83,7 @@ const inputStyle: React.CSSProperties = {
     fontSize: '16px',
     lineHeight: '24px',
     fontFamily: 'inherit',
-    color: 'inherit',
+    color: 'black',
     backgroundColor: 'white',
     transition: 'border-color 0.2s, box-shadow 0.2s',
     outline: 'none',

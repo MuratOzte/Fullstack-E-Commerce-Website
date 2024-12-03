@@ -59,17 +59,27 @@ const RegisterContainer = () => {
                         backgroundColor: 'white',
                         color: 'black',
                     },
+                    ':disabled': {
+                        backgroundColor: 'GrayText',
+                        color: 'white',
+                    },
                     ...buttonStyle,
                 }}
                 loading={isLoading}
-                disabled={data.username === '' || data.password === ''}
+                disabled={
+                    data.username === '' ||
+                    data.password === '' ||
+                    data.name === ''
+                }
                 variant="contained"
                 color="primary"
                 onClick={submitBtnHandler}
             >
-                {data.username === '' || data.password === ''
-                    ? 'Fill in the fields'
-                    : 'Register'}
+                {data.username === '' ||
+                    data.password === '' ||
+                    (data.name === '' && 'Fill in the form')}
+                {!isLoading && 'Login'}
+                {isLoading && ' '}
             </LoadingButton>
             {isError && (
                 <Alert
@@ -97,6 +107,7 @@ const entireDivStyle: React.CSSProperties = {
 
 const buttonStyle: React.CSSProperties = {
     width: '100%',
+    height: '40px',
     marginTop: '16px',
     padding: '2px',
     fontSize: '1rem',
